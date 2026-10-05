@@ -20,7 +20,8 @@
   }
 
   /* 2. FACADE MEDIA ------------------------------------------------------ */
-  // L'iframe di terze parti viene creato solo al click.
+  // Nessuna richiesta a terzi al render: l'anteprima è un'immagine self-hosted (campo "thumb" in media.json,
+  // percorso dalla root) oppure un riquadro grafico. L'iframe viene creato solo al click.
   const ytId = (url) => {
     try {
       const u = new URL(url);
@@ -28,57 +29,82 @@
       return u.searchParams.get('v') || u.pathname.split('/').filter(Boolean).pop();
     } catch { return null; }
   };
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  };
+  const PLATFORM = { youtube: 'YouTube', soundcloud: 'SoundCloud' };
 
   const buildFacade = (item) => {
-    const btn = document.createElement('button');
+    const wrap = el('div', 'media-item');
+    const btn = el('button', 'facade');
     btn.type = 'button';
-    btn.className = 'facade';
-    btn.setAttribute('aria-label', `Riproduci: ${item.title}`);
-    if (item.platform === 'youtube') {
-      const id = ytId(item.url);
-      if (id) {
-        const img = new Image();
-        img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; // TODO: valutare miniature self-hosted (privacy)
-        img.alt = ''; img.loading = 'lazy'; img.width = 480; img.height = 360;
-        btn.append(img);
-      }
+    btn.setAttribute('aria-label', `Riproduci: ${item.title} (${PLATFORM[item.platform] || ''})`);
+    if (item.thumb) {
+      const img = new Image();
+      img.src = BASE + item.thumb; img.alt = ''; img.loading = 'lazy'; img.width = 640; img.height = 360;
+      btn.append(img);
     }
-    const play = document.createElement('span');
-    play.className = 'facade__play'; play.setAttribute('aria-hidden', 'true');
-    const title = document.createElement('span');
-    title.className = 'facade__title'; title.textContent = item.title;
-    btn.append(play, title);
+    const play = el('span', 'facade__play'); play.setAttribute('aria-hidden', 'true');
+    btn.append(el('span', 'facade__plat', PLATFORM[item.platform] || ''), play);
     btn.addEventListener('click', () => {
       const f = document.createElement('iframe');
       f.title = item.title; f.allow = 'autoplay; encrypted-media'; f.allowFullscreen = true;
-      f.loading = 'lazy'; f.referrerPolicy = 'strict-origin-when-cross-origin';
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
       f.src = item.platform === 'youtube'
         ? `https://www.youtube-nocookie.com/embed/${ytId(item.url)}?autoplay=1&rel=0`
         : `https://w.soundcloud.com/player/?url=${encodeURIComponent(item.url)}&auto_play=true&visual=true`;
       btn.replaceChildren(f);
+      f.focus();
     }, { once: true });
-    return btn;
+    const meta = el('div', 'media-meta');
+    meta.append(el('h3', '', item.title), el('p', '', [item.artist, item.date].filter(Boolean).join(' — ')));
+    wrap.append(btn, meta);
+    return wrap;
+  };
+
+  // segnaposto onesto quando non ci sono contenuti con URL
+  const buildEmpty = () => {
+    const wrap = el('div', 'media-item');
+    const box = el('div', 'facade facade--empty');
+    box.append(el('span', 'facade__empty', 'Set in arrivo'));
+    wrap.append(box);
+    return wrap;
   };
 
   const mediaHosts = document.querySelectorAll('[data-media]');
-  if (mediaHosts.length) {
+  const channelLinks = document.querySelectorAll('[data-channel]');
+  if (mediaHosts.length || channelLinks.length) {
     fetch(`${BASE}data/media.json`).then((r) => r.json()).then((data) => {
       mediaHosts.forEach((host) => {
         const tag = host.dataset.mediaTag;
         const limit = Number(host.dataset.mediaLimit) || Infinity;
         const items = data.items.filter((i) => i.url && (!tag || (i.tags || []).includes(tag))).slice(0, limit);
-        if (!items.length) { host.innerHTML = '<p class="media-note">Set in arrivo.</p>'; return; }
+        if (!items.length) { host.append(buildEmpty()); return; }
         items.forEach((i) => host.append(buildFacade(i)));
-        host.insertAdjacentHTML('afterend', '<p class="media-note">Al click si carica il player di YouTube o SoundCloud, che può usare cookie di terze parti.</p>');
+        host.insertAdjacentElement('afterend', el('p', 'media-note', 'Contenuti esterni: al click si carica il player di YouTube o SoundCloud, che può impostare cookie di terze parti.'));
       });
-    }).catch(() => mediaHosts.forEach((h) => { h.innerHTML = '<p class="media-note">Contenuti non disponibili.</p>'; }));
+      // pulsanti verso i canali: se l'URL manca restano visibili ma disattivati (nessun link finto)
+      channelLinks.forEach((a) => {
+        const url = (data.channels || {})[a.dataset.channel];
+        if (url) { a.href = url; return; }
+        a.removeAttribute('href');
+        a.classList.add('btn--off');
+        a.setAttribute('aria-disabled', 'true');
+        a.textContent = `${a.dataset.channelLabel} — link in arrivo`;
+      });
+    }).catch(() => mediaHosts.forEach((h) => h.append(buildEmpty())));
   }
 
   /* 3. EVENTI ------------------------------------------------------------ */
   const eventHosts = document.querySelectorAll('[data-events]');
   if (eventHosts.length) {
     const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    const row = (e) => `<article class="event"><p class="event__date">${esc(e.date)}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p></div></article>`;
+    const fmt = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    const row = (e) => `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p></div></article>`;
+    const empty = `<div class="empty"><strong>Nessuna data in programma</strong><p>Le prossime date compaiono qui. Vuoi portarci nella tua serata?</p><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking →</a></div>`; // TODO: copy definitivo
     fetch(`${BASE}data/events.json`).then((r) => r.json()).then(({ events }) => {
       const today = new Date().toISOString().slice(0, 10);
       const up = events.filter((e) => e.date >= today).sort((a, b) => a.date.localeCompare(b.date));
@@ -86,9 +112,21 @@
       eventHosts.forEach((h) => {
         const kind = h.dataset.events;
         const list = kind === 'archive' ? past : kind === 'next' ? up.slice(0, 1) : up;
-        h.innerHTML = list.length ? list.map(row).join('')
-          : '<p>Nessuna data in programma. <a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking</a>.</p>'; // TODO: copy definitivo
+        h.innerHTML = list.length ? list.map(row).join('') : (kind === 'archive' ? '<p class="media-note">Archivio in costruzione.</p>' : empty);
       });
-    }).catch(() => {});
+    }).catch(() => eventHosts.forEach((h) => { h.innerHTML = empty; }));
+  }
+
+  /* 4. REVEAL ALLO SCROLL ------------------------------------------------ */
+  // Solo per ciò che sta sotto il fold; senza JS o con prefers-reduced-motion tutto resta visibile.
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.remove('is-hidden'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('main > section:not(.hero) > *').forEach((n) => {
+      if (n.getBoundingClientRect().top < innerHeight) return;
+      n.classList.add('reveal', 'is-hidden');
+      io.observe(n);
+    });
   }
 })();

@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" /> <!-- TODO: creare favicon -->
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- TODO: preload font woff2 self-hosted da assets/fonts/ -->
+  <link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <script src="../js/main.js" defer></script>
 </head>
 <body data-page="chi-siamo">
@@ -26,7 +26,7 @@
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <a class="brand" href="../" aria-label="New Waves — Home">
-      <img src="../assets/img/brand/logo-mark.webp" width="40" height="48" alt="" />
+      <img src="../assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" />
       <span class="brand__name">NEW WAVES<span class="dot">.</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -46,15 +46,16 @@
 
   <!-- FOOTER: tenere identico in tutte le pagine -->
   <footer class="site-footer">
-    <p class="label">NEW WAVES UNDERGROUND MOVEMENT — JUNGLE · DRUM &amp; BASS · DUBSTEP</p>
+    <p class="footer-big" aria-hidden="true">NEW WAVES<span class="dot">.</span></p>
+    <p class="label">New Waves Underground Movement — Jungle · Drum &amp; Bass · Dubstep — Venezia / Pordenone</p>
     <ul class="footer-links">
-      <li><a href="https://instagram.com/newwaves_um" rel="noopener">Instagram</a></li>
-      <li><a href="https://instagram.com/mountainwavesfest" rel="noopener">Mountain Waves</a></li>
-      <li><a href="https://instagram.com/bass_files_italia" rel="noopener">Bass Files</a></li>
+      <li><a href="https://instagram.com/newwaves_um" rel="noopener">Instagram New Waves</a></li>
+      <li><a href="https://instagram.com/bass_files_italia" rel="noopener">Instagram Bass Files</a></li>
+      <li><a href="https://instagram.com/mountainwavesfest" rel="noopener">Instagram Mountain Waves Fest</a></li>
       <li><a href="../mountain-waves/">Mountain Waves (in arrivo)</a></li>
-      <li><a href="mailto:newwavesundergroundmovement@gmail.com">Booking</a></li>
+      <li><a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Booking via mail</a></li>
+      <!-- TODO: link canali YouTube e SoundCloud (da data/media.json -> channels) -->
     </ul>
-    <!-- TODO: link YouTube e SoundCloud -->
     <p class="legal">© 2026 New Waves Underground Movement</p>
   </footer>
 </body>

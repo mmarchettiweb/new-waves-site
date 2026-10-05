@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" /> <!-- TODO: creare favicon -->
   <link rel="stylesheet" href="css/style.css" />
-  <!-- TODO: preload font woff2 self-hosted da assets/fonts/ -->
+  <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <script src="js/main.js" defer></script>
 </head>
 <body data-page="home">
@@ -26,42 +26,85 @@
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <a class="brand" href="./" aria-label="New Waves — Home" aria-current="page">
-      <img src="assets/img/brand/logo-mark.webp" width="40" height="48" alt="" />
+      <img src="assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" />
       <span class="brand__name">NEW WAVES<span class="dot">.</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Principale">
-      <ul><li><a href="chi-siamo/">Chi siamo</a></li><li><a href="eventi/">Eventi</a></li><li><a href="bass-files/">Bass Files</a></li><li><a href="radio-ombra/">Radio Ombra</a></li><li><a href="contatti/">Contatti</a></li></ul>
+      <ul><li><a href="./chi-siamo/">Chi siamo</a></li><li><a href="./eventi/">Eventi</a></li><li><a href="./bass-files/">Bass Files</a></li><li><a href="./radio-ombra/">Radio Ombra</a></li><li><a href="./contatti/">Contatti</a></li></ul>
     </nav>
   </header>
 
   <main id="main">
-    
+    <!-- HERO: texture arancione su nero, titolo gigante, marchio ritagliato -->
     <section class="hero" aria-labelledby="hero-title">
-      <p class="label">PRESS KIT — BOOKING → TODO: sostituire con tagline definitiva</p>
-      <h1 id="hero-title">NEW WAVES<span class="dot">.</span></h1>
-      <p class="hero__sub">JUNGLE — DRUM &amp; BASS — DUBSTEP</p>
-      <!-- TODO: hero con assets/img/hero/hero-orange.webp (fetchpriority="high") -->
+      <img class="hero__bg" src="assets/img/hero/hero-orange-1400.webp" srcset="assets/img/hero/hero-orange-800.webp 800w, assets/img/hero/hero-orange-1400.webp 1400w, assets/img/hero/hero-orange.webp 2048w" sizes="100vw" width="2048" height="1152" alt="" fetchpriority="high" decoding="async" />
+      <img class="hero__mark" src="assets/img/brand/logo-mark.webp" width="1000" height="1194" alt="" />
+      <p class="label">Collettivo bass music — Venezia / Pordenone</p>
+      <h1 id="hero-title">NEW<br />WAVES<span class="dot">.</span></h1>
+      <p class="hero__sub">Jungle — Drum &amp; Bass — Dubstep</p>
+      <div class="btn-row">
+        <a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Booking →</a>
+        <a class="btn btn--ghost" href="#ascolta">Ascolta</a>
+      </div>
     </section>
-    <section aria-labelledby="manifesto"><p class="label">01 — IL COLLETTIVO</p><h2 id="manifesto">TODO manifesto breve</h2></section>
-    <section aria-labelledby="membri"><p class="label">02 — I MEMBRI</p><h2 id="membri">TODO anteprima 5 membri</h2></section>
-    <section aria-labelledby="prossimo"><p class="label">03 — PROSSIMO EVENTO</p><h2 id="prossimo">TODO da data/events.json</h2><div data-events="next"></div></section>
-    <section aria-labelledby="progetti"><p class="label">04 — PROGETTI</p><h2 id="progetti">TODO Bass Files · Radio Ombra · Mountain Waves</h2></section>
-    <section aria-labelledby="ascolta"><p class="label">05 — ASCOLTA</p><h2 id="ascolta">YouTube &amp; SoundCloud</h2><div class="media-grid" data-media data-media-limit="4"></div></section>
-    <section aria-labelledby="booking"><p class="label">06 — BOOKING</p><h2 id="booking">TODO CTA booking</h2><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici</a></section>
+
+    <section class="manifesto" aria-labelledby="manifesto">
+      <div><p class="label">01 — Il collettivo</p><h2 id="manifesto">Bass music<span class="dot">.</span><br />Zero gerarchie<span class="dot">.</span></h2></div>
+      <div class="manifesto__text">
+        <p>New Waves Underground Movement è un collettivo di bass music orientato su jungle e drum &amp; bass, attivo tra Venezia e Pordenone.</p>
+        <p>Djambe, Dema, Coce, Marsiattack e Damnspark portano il proprio concept di sound e visual al CS Rivolta di Venezia e all'Astro Club di Pordenone, con numerose chiamate in tutto il territorio.</p>
+        <a class="link-arrow" href="chi-siamo/">Chi siamo</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="membri"><p class="label">02 — I membri · 5 teste, nessuna gerarchia</p><h2 id="membri">Cinque teste<span class="dot">.</span></h2>
+      <ul class="member-list">
+        <li><a class="member-row" href="chi-siamo/#djambe"><span class="member-row__n">01</span><span class="member-row__name">Djambe</span><span class="member-row__role">DJ — Fondatore</span></a></li>
+        <li><a class="member-row" href="chi-siamo/#dema"><span class="member-row__n">02</span><span class="member-row__name">Dema</span><span class="member-row__role">DJ — Tecnica audio e luci</span></a></li>
+        <li><a class="member-row" href="chi-siamo/#coce"><span class="member-row__n">03</span><span class="member-row__name">Coce</span><span class="member-row__role">DJ — Luci</span></a></li>
+        <li><a class="member-row" href="chi-siamo/#mrsn"><span class="member-row__n">04</span><span class="member-row__name">MRSN</span><span class="member-row__role">Visual artist</span></a></li>
+        <li><a class="member-row" href="chi-siamo/#damnspark"><span class="member-row__n">05</span><span class="member-row__name">Damnspark</span><span class="member-row__role">Visual artist</span></a></li>
+      </ul>
+      <p class="section-foot"><a class="link-arrow" href="chi-siamo/">Schede complete</a></p>
+    </section>
+
+    <section aria-labelledby="prossimo"><p class="label">03 — Prossimo evento</p><h2 id="prossimo">Prossima data<span class="dot">.</span></h2><div data-events="next"></div></section>
+
+    <section aria-labelledby="progetti"><p class="label">04 — Progetti</p><h2 id="progetti">Progetti<span class="dot">.</span></h2>
+      <ul class="project-list">
+        <li class="project"><p class="project__tag">Format</p><h3><a href="bass-files/">Bass Files</a></h3><p>Interviste e dj set dedicati alla scena, in collaborazione con Drum And Bass Italia.</p></li>
+        <li class="project"><p class="project__tag">Residenza artistica</p><h3><a href="radio-ombra/">Radio Ombra</a></h3><p>Radio indipendente con base al Chet, locale storico di Venezia.</p></li>
+        <li class="project"><p class="project__tag">Festival — in arrivo</p><h3><a href="mountain-waves/">Mountain Waves</a></h3><p>Il festival organizzato dal collettivo.</p></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="ascolta"><p class="label">05 — Ascolta</p><h2 id="ascolta">Ascolta<span class="dot">.</span></h2>
+      <div class="media-grid" data-media data-media-limit="4"></div>
+      <div class="btn-row">
+        <a class="btn" data-channel="youtube" data-channel-label="Tutti i set su YouTube" rel="noopener">Tutti i set su YouTube</a>
+        <a class="btn btn--ghost" data-channel="soundcloud" data-channel-label="Tutti i mix su SoundCloud" rel="noopener">Tutti i mix su SoundCloud</a>
+      </div>
+    </section>
+
+    <section class="cta-booking" aria-labelledby="booking"><p class="label">06 — Booking</p><h2 id="booking">Portaci<br />nel tuo posto<span class="dot">.</span></h2>
+      <p>Formazione variabile: la lineup di ogni data si conferma in fase di booking.</p>
+      <div class="btn-row"><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking →</a><a class="btn btn--ghost" href="contatti/">Contatti e rider</a></div>
+    </section>
   </main>
 
   <!-- FOOTER: tenere identico in tutte le pagine -->
   <footer class="site-footer">
-    <p class="label">NEW WAVES UNDERGROUND MOVEMENT — JUNGLE · DRUM &amp; BASS · DUBSTEP</p>
+    <p class="footer-big" aria-hidden="true">NEW WAVES<span class="dot">.</span></p>
+    <p class="label">New Waves Underground Movement — Jungle · Drum &amp; Bass · Dubstep — Venezia / Pordenone</p>
     <ul class="footer-links">
-      <li><a href="https://instagram.com/newwaves_um" rel="noopener">Instagram</a></li>
-      <li><a href="https://instagram.com/mountainwavesfest" rel="noopener">Mountain Waves</a></li>
-      <li><a href="https://instagram.com/bass_files_italia" rel="noopener">Bass Files</a></li>
+      <li><a href="https://instagram.com/newwaves_um" rel="noopener">Instagram New Waves</a></li>
+      <li><a href="https://instagram.com/bass_files_italia" rel="noopener">Instagram Bass Files</a></li>
+      <li><a href="https://instagram.com/mountainwavesfest" rel="noopener">Instagram Mountain Waves Fest</a></li>
       <li><a href="mountain-waves/">Mountain Waves (in arrivo)</a></li>
-      <li><a href="mailto:newwavesundergroundmovement@gmail.com">Booking</a></li>
+      <li><a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Booking via mail</a></li>
+      <!-- TODO: link canali YouTube e SoundCloud (da data/media.json -> channels) -->
     </ul>
-    <!-- TODO: link YouTube e SoundCloud -->
     <p class="legal">© 2026 New Waves Underground Movement</p>
   </footer>
 </body>
