@@ -36,9 +36,31 @@
   </header>
 
   <main id="main">
-    <header class="page-head"><p class="label">NEW WAVES — EVENTI</p><h1>EVENTI<span class="dot">.</span></h1></header>
-    <section aria-labelledby="prossime"><p class="label">PROSSIME DATE</p><h2 id="prossime">TODO</h2><div data-events="upcoming"></div></section>
-    <section aria-labelledby="archivio"><p class="label">ARCHIVIO</p><h2 id="archivio">TODO</h2><div data-events="archive"></div></section>
+    <header class="page-head"><p class="label">New Waves — Eventi</p><h1>Eventi<span class="dot">.</span></h1></header>
+
+    <section aria-labelledby="prossime"><p class="label">01 — Prossime date</p><h2 id="prossime">Prossime date<span class="dot">.</span></h2>
+      <!-- Le date si aggiungono in data/events.json; con lista vuota il JS mostra lo stato vuoto con CTA booking -->
+      <div data-events="upcoming"><noscript><p>Attiva JavaScript per vedere le date, oppure <a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">scrivici</a>.</p></noscript></div>
+    </section>
+
+    <section aria-labelledby="dove"><p class="label">02 — Dove suoniamo</p><h2 id="dove">Dove suoniamo<span class="dot">.</span></h2>
+      <ul class="venue-list">
+        <li><h3>CS Rivolta</h3><p class="venue__where">Venezia</p></li>
+        <li><h3>Astro Club</h3><p class="venue__where">Pordenone</p></li>
+        <li><h3>Veneto Blaze</h3><p class="venue__where">Stage curato dal collettivo da due anni</p></li>
+        <li><h3>Mountain Waves Fest</h3><p class="venue__where">Il festival organizzato dal collettivo — <a href="../mountain-waves/">in arrivo</a></p></li>
+      </ul>
+      <p class="media-note">Più numerose chiamate in tutto il territorio.</p>
+    </section>
+
+    <section aria-labelledby="archivio"><p class="label">03 — Archivio</p><h2 id="archivio">Archivio<span class="dot">.</span></h2>
+      <div data-events="archive"></div>
+    </section>
+
+    <section class="cta-booking" aria-labelledby="booking"><p class="label">04 — Booking</p><h2 id="booking">Una data<br />nel tuo posto<span class="dot">.</span></h2>
+      <p>Formazione variabile: la lineup di ogni data si conferma in fase di booking.</p>
+      <div class="btn-row"><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking →</a><a class="btn btn--ghost" href="../contatti/">Contatti e rider</a></div>
+    </section>
   </main>
 
   <!-- FOOTER: tenere identico in tutte le pagine -->

@@ -103,12 +103,31 @@
   if (eventHosts.length) {
     const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
     const fmt = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
-    const row = (e) => `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p></div></article>`;
+    const row = (e) => {
+      const name = e.link ? `<a href="${esc(e.link)}" rel="noopener">${esc(e.title)}</a>` : esc(e.title);
+      const flyer = e.flyer ? `<img class="event__flyer" src="${BASE}${esc(e.flyer)}" alt="Flyer: ${esc(e.title)}" loading="lazy" />` : '';
+      return `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${name}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p></div>${flyer}</article>`;
+    };
+    // JSON-LD schema.org/Event generato dalle date future (solo nella pagina Eventi)
+    const jsonLd = (list) => {
+      if (!list.length || document.body.dataset.page !== 'eventi') return;
+      const s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.textContent = JSON.stringify(list.map((e) => ({
+        '@context': 'https://schema.org', '@type': 'MusicEvent', name: e.title, startDate: e.date,
+        eventStatus: 'https://schema.org/EventScheduled',
+        location: { '@type': 'Place', name: e.venue, address: { '@type': 'PostalAddress', addressLocality: e.city || undefined } },
+        performer: { '@type': 'MusicGroup', name: 'New Waves Underground Movement' },
+        ...(e.link ? { url: e.link } : {}),
+      })));
+      document.head.append(s);
+    };
     const empty = `<div class="empty"><strong>Nessuna data in programma</strong><p>Le prossime date compaiono qui. Vuoi portarci nella tua serata?</p><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking →</a></div>`; // TODO: copy definitivo
     fetch(`${BASE}data/events.json`).then((r) => r.json()).then(({ events }) => {
       const today = new Date().toISOString().slice(0, 10);
       const up = events.filter((e) => e.date >= today).sort((a, b) => a.date.localeCompare(b.date));
       const past = events.filter((e) => e.date < today).sort((a, b) => b.date.localeCompare(a.date));
+      jsonLd(up);
       eventHosts.forEach((h) => {
         const kind = h.dataset.events;
         const list = kind === 'archive' ? past : kind === 'next' ? up.slice(0, 1) : up;
