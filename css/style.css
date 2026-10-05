@@ -1,0 +1,98 @@
+/* ==========================================================================
+   NEW WAVES — style.css
+   Organizzazione: 1 Tokens · 2 Reset/base · 3 Layout · 4 Componenti · 5 Pagine · 6 Utility
+   Questo è solo lo SCHELETRO: lo stile definitivo (tipografia, griglia, grana,
+   animazioni) va costruito seguendo docs/PROMPT.md.
+   ========================================================================== */
+
+/* 1. TOKENS ------------------------------------------------------------- */
+:root {
+  /* colore */
+  --c-bg: #0a0a0a;          /* nero profondo */
+  --c-bg-2: #141414;        /* superfici */
+  --c-line: #2a2a2a;        /* linee sottili */
+  --c-text: #f2f0eb;        /* bianco caldo */
+  --c-text-dim: #a8a59f;
+  --c-accent: #ff5a1f;      /* arancione fuoco, unico accento */
+
+  /* tipografia (TODO: font self-hosted in assets/fonts/) */
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* spaziatura / layout */
+  --gutter: clamp(16px, 4vw, 40px);
+  --max: 1200px;
+  --header-h: 72px;
+  --radius: 0;              /* underground: angoli netti */
+}
+
+/* 2. RESET / BASE ------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--c-bg); color: var(--c-text);
+  font: 400 1rem/1.6 var(--f-body);
+}
+img, video, iframe { max-width: 100%; display: block; }
+a { color: inherit; text-decoration-color: var(--c-accent); text-underline-offset: 0.2em; }
+a:hover { color: var(--c-accent); }
+:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-transform: uppercase; line-height: 0.95; margin: 0 0 0.5em; letter-spacing: -0.01em; }
+h1 { font-size: clamp(3rem, 12vw, 9rem); font-weight: 800; }
+h2 { font-size: clamp(1.75rem, 5vw, 3.5rem); }
+.dot { color: var(--c-accent); }
+.label { font: 500 0.75rem/1.4 var(--f-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-text-dim); margin: 0 0 1rem; }
+
+/* 3. LAYOUT ------------------------------------------------------------- */
+main { padding: calc(var(--header-h) + 2rem) var(--gutter) 4rem; max-width: var(--max); margin-inline: auto; }
+main > section { padding-block: clamp(2.5rem, 7vw, 5rem); border-top: 1px solid var(--c-line); }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--c-accent); color: #000; padding: .75rem 1rem; z-index: 100; }
+.skip-link:focus { left: 0; }
+
+/* 4. COMPONENTI --------------------------------------------------------- */
+/* header + nav */
+.site-header { position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding-inline: var(--gutter); background: rgba(10,10,10,.92); border-bottom: 1px solid var(--c-line); }
+.brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.brand__name { font: 800 1rem var(--f-display); letter-spacing: .06em; }
+.site-nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+.site-nav a { text-decoration: none; font: 500 .8rem var(--f-mono); letter-spacing: .14em; text-transform: uppercase; padding-block: .5rem; border-bottom: 2px solid transparent; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--c-text); border-bottom-color: var(--c-accent); }
+.nav-toggle { display: none; background: none; color: var(--c-text); border: 1px solid var(--c-line); padding: .5rem .9rem; font: 500 .8rem var(--f-mono); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+@media (max-width: 768px) {
+  .nav-toggle { display: inline-block; }
+  .site-nav { position: fixed; inset: var(--header-h) 0 auto 0; background: var(--c-bg); border-bottom: 1px solid var(--c-line); padding: 1rem var(--gutter) 1.5rem; display: none; }
+  .site-nav.is-open { display: block; }
+  .site-nav ul { flex-direction: column; gap: .5rem; }
+  .site-nav a { display: block; font-size: 1rem; padding-block: .75rem; }
+}
+
+/* bottoni */
+.btn { display: inline-block; background: var(--c-accent); color: #0a0a0a; font: 700 .9rem var(--f-display); letter-spacing: .08em; text-transform: uppercase; padding: 1rem 1.5rem; text-decoration: none; border-radius: var(--radius); }
+.btn:hover { background: var(--c-text); color: #0a0a0a; }
+
+/* media / facade (YouTube, SoundCloud) */
+.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.facade { position: relative; aspect-ratio: 16 / 9; background: var(--c-bg-2); border: 1px solid var(--c-line); display: grid; place-items: center; cursor: pointer; width: 100%; padding: 0; color: inherit; text-align: left; }
+.facade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+.facade__title { position: absolute; left: 1rem; bottom: 1rem; right: 1rem; font: 700 .95rem var(--f-display); text-transform: uppercase; }
+.facade__play { z-index: 1; width: 64px; height: 64px; background: var(--c-accent); clip-path: polygon(20% 12%, 20% 88%, 88% 50%); }
+.facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.media-note { font: 400 .75rem var(--f-mono); color: var(--c-text-dim); }
+
+/* eventi */
+.event { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--c-line); }
+.event__date { font: 500 .85rem var(--f-mono); color: var(--c-accent); }
+
+/* footer */
+.site-footer { border-top: 1px solid var(--c-line); padding: 2.5rem var(--gutter); }
+.footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; padding: 0; margin: 1rem 0; }
+.legal { font-size: .8rem; color: var(--c-text-dim); }
+
+/* 5. PAGINE ------------------------------------------------------------- */
+.hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: end; border-top: 0 !important; }
+.hero__sub { font: 500 .85rem var(--f-mono); letter-spacing: .2em; color: var(--c-text-dim); }
+.page-404 { min-height: 100vh; display: grid; align-content: center; }
+
+/* 6. UTILITY ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

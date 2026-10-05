@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /mountain-waves/
+Sitemap: https://DOMINIO.TLD/sitemap.xml

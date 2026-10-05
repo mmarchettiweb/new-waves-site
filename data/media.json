@@ -1,0 +1,19 @@
+{
+  "_comment": "Set e mix. platform: youtube|soundcloud. tags: collettivo|bass-files|radio-ombra. Esempio sotto, rimuovere.",
+  "channels": {
+    "youtube": "",
+    "soundcloud": ""
+  },
+  "items": [
+    {
+      "platform": "youtube",
+      "url": "",
+      "title": "TODO titolo set",
+      "artist": "",
+      "date": "",
+      "tags": [
+        "collettivo"
+      ]
+    }
+  ]
+}
