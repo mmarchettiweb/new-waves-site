@@ -65,7 +65,7 @@ Nota nel kit: "Formazione variabile — la lineup di ogni data si conferma in fa
 |---|---|---|
 | MORONAUTA | Live visual | Visual dal vivo per le serate al Rivolta del collettivo. |
 | CIC1 | DJ — Astro Club | Dalla casa di Fontanafredda. Set che variano dalla jungle alla dancefloor. |
-| SNOK BROWN | Host — serate al Rivolta | La voce sul microfono, quando la serata chiede un corpo in più. |
+| SNOK BROWN | Host — CS Rivolta | La voce sul microfono, quando la serata chiede un corpo in più. |
 | JACOPOPIS | DJ — Audio | Consolle o banco, a seconda di dove serve. |
 
 ## 05 — Rider tecnico DJ
