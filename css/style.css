@@ -320,10 +320,10 @@ body[data-page="bass-files"] main { position: relative; overflow: hidden; isolat
   /* New Waves: gigante, bianco a bassa opacità, tagliato dal bordo sinistro */
   .bf-bg__nw { background-color: var(--c-text); opacity: .06; width: 125vw; aspect-ratio: 1000 / 1194; left: -55vw; top: 5rem; -webkit-mask-image: url("../assets/img/brand/logo-mark.webp"); mask-image: url("../assets/img/brand/logo-mark.webp"); }
   /* Drum And Bass Italia: arancione, affianco all'immagine dei conduttori (ancorato alla figure), tagliato dal bordo destro */
-  .bf-bg__dnb { background-color: var(--c-accent); opacity: .17; width: 62vw; aspect-ratio: 1; left: 62%; top: 4%; z-index: -1; -webkit-mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); }
+  .bf-bg__dnb { background-color: var(--c-accent); opacity: .17; width: 36vw; aspect-ratio: 1; left: calc(100% + .25rem); top: 24%; z-index: -1; -webkit-mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); }
   @media (min-width: 768px) {
     .bf-bg__nw { width: 760px; left: -280px; top: 6rem; opacity: .07; }
-    .bf-bg__dnb { width: 480px; left: 76%; top: 8%; }
+    .bf-bg__dnb { width: clamp(160px, 15vw, 280px); left: calc(100% - .25rem); top: 22%; }
   }
   /* variante B: griglia di loghi alternati (attivabile con class="bf-bg bf-bg--grid" sul contenitore) */
   .bf-bg--grid span { display: none; }
@@ -335,7 +335,8 @@ body[data-page="bass-files"] main { position: relative; overflow: hidden; isolat
 .bf-collab__x { color: var(--c-accent); font-size: 1.1rem; }
 /* immagine conduttori: illustrazione quadrata, colori originali (per il bianco e nero: class="bf-figure bf-figure--bw") */
 .bf-figure { position: relative; margin: 2rem 0 0; max-width: 520px; }
-@media (max-width: 767px) { .bf-figure { max-width: 74%; } }
+@media (max-width: 767px) { .bf-figure { max-width: 68%; } }
+@media (min-width: 768px) and (max-width: 1099px) { .bf-figure { max-width: 62%; } }
 .bf-figure .photo-slot { aspect-ratio: 1; padding: 0; }
 .bf-figure .photo-slot img { filter: none; object-fit: contain; }
 .bf-figure--bw .photo-slot img { filter: grayscale(1) contrast(1.1); }
