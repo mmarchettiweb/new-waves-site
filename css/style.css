@@ -311,6 +311,35 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 @media (min-width: 768px) { .spec-list li { grid-template-columns: 12rem 1fr; } }
 .cta-booking .btn { font-size: clamp(.7rem, 3.3vw, 1rem); letter-spacing: .04em; text-transform: none; overflow-wrap: anywhere; }
 
+
+/* PAGINA BASS FILES — loghi di sfondo (direzione A "collaborazione in scala") e immagine conduttori ---- */
+body[data-page="bass-files"] main { position: relative; overflow: hidden; isolation: isolate; }
+.bf-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+@supports ((-webkit-mask-image: url("x")) or (mask-image: url("x"))) {
+  .bf-bg span { position: absolute; display: block; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; }
+  /* New Waves: gigante, bianco a bassa opacità, tagliato dal bordo sinistro */
+  .bf-bg__nw { background-color: var(--c-text); opacity: .06; width: 125vw; aspect-ratio: 1000 / 1194; left: -55vw; top: 5rem; -webkit-mask-image: url("../assets/img/brand/logo-mark.webp"); mask-image: url("../assets/img/brand/logo-mark.webp"); }
+  /* Drum And Bass Italia: più piccolo, arancione, tagliato dal bordo destro, più in basso */
+  .bf-bg__dnb { background-color: var(--c-accent); opacity: .17; width: 78vw; aspect-ratio: 1; right: -30vw; top: 70%; -webkit-mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); }
+  @media (min-width: 768px) {
+    .bf-bg__nw { width: 760px; left: -280px; top: 6rem; opacity: .07; }
+    .bf-bg__dnb { width: 540px; right: -150px; top: 63%; }
+  }
+  /* variante B: griglia di loghi alternati (attivabile con class="bf-bg bf-bg--grid" sul contenitore) */
+  .bf-bg--grid span { display: none; }
+  .bf-bg--grid { background: repeating-linear-gradient(90deg, transparent 0 calc(33.33% - 1px), var(--c-line) calc(33.33% - 1px) 33.33%); }
+}
+/* lockup di collaborazione: linea arancione + × + testo visibile */
+.bf-collab { display: flex; align-items: center; gap: .75rem; font: 500 var(--fs-label)/1.4 var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--c-text-dim); margin: 1.5rem 0 0; }
+.bf-collab::before { content: ""; flex: 0 0 2.5rem; height: 2px; background: var(--c-accent); }
+.bf-collab__x { color: var(--c-accent); font-size: 1.1rem; }
+/* immagine conduttori: illustrazione quadrata, colori originali (per il bianco e nero: class="bf-figure bf-figure--bw") */
+.bf-figure { margin: 2rem 0 0; max-width: 520px; }
+.bf-figure .photo-slot { aspect-ratio: 1; padding: 0; }
+.bf-figure .photo-slot img { filter: none; object-fit: contain; }
+.bf-figure--bw .photo-slot img { filter: grayscale(1) contrast(1.1); }
+.bf-figure figcaption { margin-top: .75rem; }
+
 /* booking CTA */
 .cta-booking h2 { font-size: clamp(3rem, 14vw, 10rem); line-height: .85; }
 .cta-booking p:not(.label) { font-size: 1.15rem; }

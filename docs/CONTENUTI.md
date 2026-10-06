@@ -56,6 +56,7 @@ Realizza le grafiche di Bass Files, il format di interviste e dj set del collett
 - **Veneto Blaze** — stage curato dal collettivo da due anni.
 - **Radio Ombra** — residenza artistica; radio indipendente con base al Chet, locale storico di Venezia.
 - **Bass Files** — format di interviste e dj set dedicato alla scena, in collaborazione con Drum And Bass Italia. Instagram: https://instagram.com/bass_files_italia
+  - Nasce da un'idea dei tre conduttori: Djambe, Niko (Drum And Bass Italia) e Dema. Immagine dei conduttori: `assets/img/bass-files/`. Di Niko non ci sono altri dati (cognome, bio, Instagram).
 - **BPM Arena** — progetto di Coce, focus su Trieste e dintorni.
 - Locali: CS Rivolta (Venezia), Astro Club (Pordenone).
 
