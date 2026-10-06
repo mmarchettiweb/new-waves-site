@@ -75,8 +75,7 @@ URL puliti, ogni pagina in una cartella con il proprio `index.html`:
 - URL YouTube/SoundCloud dei set.
 - Foto di MRSN e Damnspark (usa un placeholder grafico coerente, non foto stock).
 - Le foto nel Press Kit non sono etichettate: l'associazione `member-a/b/c` con Djambe/Dema/Coce **va confermata da Marco**.
-- Ruolo di Snok Brown (vuoto nel Press Kit).
-- Ruolo dei primi tre membri nei crediti ("DJ — Fondatore" è solo di Djambe).
+- Instagram di MRSN e Damnspark da fornire.
 - Dominio definitivo e se il deploy è su dominio custom o GitHub Pages in sottocartella.
 - Contenuti per Eventi: elenco date passate e future, con venue e flyer.
 - Contenuti per Bass Files: episodi/ospiti, link ai video, eventuale playlist YouTube.

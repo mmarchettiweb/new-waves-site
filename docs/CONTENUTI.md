@@ -17,13 +17,13 @@ Oltre alla scena club, il collettivo organizza il Mountain Waves Fest, cura da d
 ## 02 — I membri (5 teste — nessuna gerarchia)
 | Nome | Ruolo |
 |---|---|
-| DJAMBE | DJ — Fondatore |
+| DJAMBE | DJ — Pubbliche relazioni |
 | DEMA | DJ — Tecnica audio e luci |
 | COCE | DJ — Luci |
 | MRSN (ex Marsiattack) | Visual artist |
-| DAMNSPARK (Damiano) | Visual artist |
+| DAMNSPARK | Visual artist |
 
-### Djambe — DJ, Fondatore — Instagram @djambe__ (https://instagram.com/djambe__)
+### Djambe — DJ, Pubbliche relazioni — Instagram @djambe__ (https://instagram.com/djambe__)
 Djambe è un DJ con base a Venezia, attivo nella scena bass music italiana con un sound che unisce jungle, drum and bass, dubstep e influenze UK.
 Anni di esplorazione tra club, eventi e sound system di tutto il Nord Italia, condividendo il palco con nomi come Black Sun Empire, QZB e HLZ.
 Fondatore di New Waves Underground Movement. Con il collettivo ha ideato e conduce Bass Files, format di interviste e dj set in collaborazione con Drum And Bass Italia, e cura la collaborazione con Radio Ombra, radio indipendente con base al Chet, locale storico di Venezia.
@@ -41,6 +41,16 @@ Approda poi alla scena dnb-jungle, con l'obiettivo di riportarla nella club cult
 Il suo sound attraversa l'intero spettro dei macro-generi, con l'intento di portare un suono fresco e innovativo nei club.
 Oggi è parte integrante del collettivo New Waves, con cui condivide l'obiettivo di rilanciare la bass music in Veneto e nel Triveneto. Porta avanti la stessa missione con BPM Arena, con focus su Trieste e dintorni.
 
+### MRSN (ex Marsiattack) — Visual artist — Instagram <!-- TODO: Instagram -->
+MRSN, già Marsiattack, è membro fondatrice di New Waves Underground Movement, visual artist e grafica del collettivo.
+Realizza la grafica delle locandine del collettivo e dei suoi eventi e cura i live visual delle serate.
+Il suo stile è astratto: lavora con materiale raccolto negli anni, tra foto e video, che destruttura e trasforma in texture, dandogli una nuova vita.
+
+### Damnspark — Visual artist — Instagram <!-- TODO: Instagram -->
+Damnspark è membro fondatore di New Waves Underground Movement e ideatore e realizzatore del logo del collettivo.
+Realizza le grafiche di Bass Files, il format di interviste e dj set del collettivo in collaborazione con Drum And Bass Italia.
+È responsabile di oggettistica e merchandising.
+
 ## 03 — Progetti (dal testo del collettivo; descrizioni da approfondire con Marco)
 - **Mountain Waves Fest** — festival organizzato dal collettivo. Instagram: https://instagram.com/mountainwavesfest
 - **Veneto Blaze** — stage curato dal collettivo da due anni.
@@ -55,7 +65,7 @@ Nota nel kit: "Formazione variabile — la lineup di ogni data si conferma in fa
 |---|---|---|
 | MORONAUTA | Live visual | Visual dal vivo per le serate al Rivolta del collettivo. |
 | CIC1 | DJ — Astro Club | Dalla casa di Fontanafredda. Set che variano dalla jungle alla dancefloor. |
-| SNOK BROWN | (ruolo non indicato) | La voce sul microfono, quando la serata chiede un corpo in più. |
+| SNOK BROWN | Host — serate al Rivolta | La voce sul microfono, quando la serata chiede un corpo in più. |
 | JACOPOPIS | DJ — Audio | Consolle o banco, a seconda di dove serve. |
 
 ## 05 — Rider tecnico DJ
