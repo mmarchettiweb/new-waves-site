@@ -22,12 +22,19 @@
   /* 2. FACADE MEDIA ------------------------------------------------------ */
   // Nessuna richiesta a terzi al render: l'anteprima è un'immagine self-hosted (campo "thumb" in media.json,
   // percorso dalla root) oppure un riquadro grafico. L'iframe viene creato solo al click.
-  const ytId = (url) => {
+  // estrae video e/o playlist da un URL YouTube (watch, youtu.be, playlist)
+  const ytParse = (url) => {
     try {
       const u = new URL(url);
-      if (u.hostname === 'youtu.be') return u.pathname.slice(1);
-      return u.searchParams.get('v') || u.pathname.split('/').filter(Boolean).pop();
-    } catch { return null; }
+      if (u.hostname === 'youtu.be') return { v: u.pathname.slice(1) };
+      return { v: u.searchParams.get('v'), list: u.searchParams.get('list') };
+    } catch { return {}; }
+  };
+  const ytEmbed = (url) => {
+    const { v, list } = ytParse(url);
+    const base = 'https://www.youtube-nocookie.com/embed/';
+    if (v) return `${base}${v}?autoplay=1&rel=0${list ? `&list=${list}` : ''}`;
+    return list ? `${base}videoseries?list=${list}&autoplay=1&rel=0` : null;
   };
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
@@ -54,7 +61,7 @@
       f.title = item.title; f.allow = 'autoplay; encrypted-media'; f.allowFullscreen = true;
       f.referrerPolicy = 'strict-origin-when-cross-origin';
       f.src = item.platform === 'youtube'
-        ? `https://www.youtube-nocookie.com/embed/${ytId(item.url)}?autoplay=1&rel=0`
+        ? ytEmbed(item.url)
         : `https://w.soundcloud.com/player/?url=${encodeURIComponent(item.url)}&auto_play=true&visual=true`;
       btn.replaceChildren(f);
       f.focus();
@@ -81,7 +88,7 @@
       mediaHosts.forEach((host) => {
         const tag = host.dataset.mediaTag;
         const limit = Number(host.dataset.mediaLimit) || Infinity;
-        const items = data.items.filter((i) => i.url && (!tag || (i.tags || []).includes(tag))).slice(0, limit);
+        const items = data.items.filter((i) => i.url && (i.platform !== 'youtube' || ytEmbed(i.url)) && (!tag || (i.tags || []).includes(tag))).slice(0, limit);
         if (!items.length) { host.append(buildEmpty()); return; }
         items.forEach((i) => host.append(buildFacade(i)));
         host.insertAdjacentElement('afterend', el('p', 'media-note', 'Contenuti esterni: al click si carica il player di YouTube o SoundCloud, che può impostare cookie di terze parti.'));
