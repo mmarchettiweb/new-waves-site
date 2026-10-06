@@ -8,12 +8,22 @@
   "items": [
     {
       "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=Jt7m2iEoHNA",
+      "title": "New Waves @ Veneto Blaze 2026 - Coce B2B Dema B2B Djambe",
+      "artist": "New Waves",
+      "date": "",
+      "tags": [
+        "collettivo"
+      ],
+      "thumb": "assets/img/media/new-waves-veneto-blaze-2026.webp"
+    },
+    {
+      "platform": "youtube",
       "url": "https://www.youtube.com/watch?v=s9nfayZUf0Y",
       "title": "Djambe b2b Dema @ This Is Dnb Fucine Vulcano 11/01/2025",
       "artist": "New Waves",
       "date": "",
       "tags": [
-        "collettivo",
         "radio-ombra"
       ],
       "thumb": "assets/img/media/djambe-dema-this-is-dnb-2025.webp"
