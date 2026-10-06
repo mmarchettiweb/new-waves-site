@@ -8,6 +8,29 @@
   "items": [
     {
       "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=s9nfayZUf0Y",
+      "title": "Djambe b2b Dema @ This Is Dnb Fucine Vulcano 11/01/2025",
+      "artist": "New Waves",
+      "date": "",
+      "tags": [
+        "collettivo",
+        "radio-ombra"
+      ],
+      "thumb": "assets/img/media/djambe-dema-this-is-dnb-2025.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=o4dPzX6sRIU",
+      "title": "Bass Files introduces Ardimann",
+      "artist": "Drum&Bass Italia",
+      "date": "",
+      "tags": [
+        "bass-files"
+      ],
+      "thumb": "assets/img/media/bass-files-ardimann.webp"
+    },
+    {
+      "platform": "youtube",
       "url": "https://www.youtube.com/playlist?list=PLHic1IAEDwjtrP7gMXRtyPHchoGaM0omK",
       "title": "Bass Files — playlist",
       "artist": "Drum&Bass Italia",
@@ -24,8 +47,7 @@
       "artist": "Radio Ombra",
       "date": "",
       "tags": [
-        "radio-ombra",
-        "collettivo"
+        "radio-ombra"
       ],
       "thumb": "assets/img/media/radio-ombra-074.webp"
     }
