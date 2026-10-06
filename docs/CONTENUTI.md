@@ -20,7 +20,7 @@ Oltre alla scena club, il collettivo organizza il Mountain Waves Fest, cura da d
 | DJAMBE | DJ — Pubbliche relazioni |
 | DEMA | DJ — Tecnica audio e luci |
 | COCE | DJ — Luci |
-| MRSN (ex Marsiattack) | Visual artist |
+| MRSN | Visual artist |
 | DAMNSPARK | Visual artist |
 
 ### Djambe — DJ, Pubbliche relazioni — Instagram @djambe__ (https://instagram.com/djambe__)
@@ -41,7 +41,7 @@ Approda poi alla scena dnb-jungle, con l'obiettivo di riportarla nella club cult
 Il suo sound attraversa l'intero spettro dei macro-generi, con l'intento di portare un suono fresco e innovativo nei club.
 Oggi è parte integrante del collettivo New Waves, con cui condivide l'obiettivo di rilanciare la bass music in Veneto e nel Triveneto. Porta avanti la stessa missione con BPM Arena, con focus su Trieste e dintorni.
 
-### MRSN (ex Marsiattack) — Visual artist — Instagram <!-- TODO: Instagram -->
+### MRSN — Visual artist — Instagram <!-- TODO: Instagram -->
 MRSN, già Marsiattack, è membro fondatrice di New Waves Underground Movement, visual artist e grafica del collettivo.
 Realizza la grafica delle locandine del collettivo e dei suoi eventi e cura i live visual delle serate.
 Il suo stile è astratto: lavora con materiale raccolto negli anni, tra foto e video, che destruttura e trasforma in texture, dandogli una nuova vita.
