@@ -2,3 +2,6 @@
 node_modules/
 *.log
 .vscode/
+
+# originali ad alta risoluzione (non servono al sito: usare le versioni .webp)
+assets/img/membri/MRSN.jpg
