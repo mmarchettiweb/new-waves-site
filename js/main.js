@@ -63,7 +63,12 @@
       f.src = item.platform === 'youtube'
         ? ytEmbed(item.url)
         : `https://w.soundcloud.com/player/?url=${encodeURIComponent(item.url)}&auto_play=true&visual=true`;
-      btn.replaceChildren(f);
+      // l'iframe non può stare dentro un <button> (browser come Firefox/Safari non gli passano i click):
+      // si sostituisce il bottone con un contenitore neutro
+      const box = el('div', 'facade facade--playing');
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      box.append(f);
+      btn.replaceWith(box);
       f.focus();
     }, { once: true });
     const meta = el('div', 'media-meta');
