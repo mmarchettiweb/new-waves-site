@@ -258,7 +258,6 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 
 /* chi siamo: bio con marchio ritagliato */
 .about { position: relative; display: grid; gap: 2rem; overflow: hidden; }
-.about__mark { position: absolute; z-index: -1; right: -18%; bottom: -12%; width: 70vw; max-width: 520px; height: auto; opacity: .1; }
 .about__text p { font-size: clamp(1.05rem, 2.4vw, 1.3rem); line-height: 1.5; max-width: 52ch; }
 @media (min-width: 768px) { .about { grid-template-columns: 5fr 7fr; align-items: start; } }
 
@@ -312,8 +311,8 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 .cta-booking .btn { font-size: clamp(.7rem, 3.3vw, 1rem); letter-spacing: .04em; text-transform: none; overflow-wrap: anywhere; }
 
 
-/* PAGINE BASS FILES e RADIO OMBRA — loghi di sfondo (Radio Ombra usa solo il logo New Waves) (direzione A "collaborazione in scala") e immagine conduttori ---- */
-body[data-page="bass-files"] main, body[data-page="radio-ombra"] main { position: relative; overflow: hidden; isolation: isolate; }
+/* PAGINE INTERNE (tutte tranne Home) — logo New Waves di sfondo; Bass Files aggiunge il logo Drum And Bass Italia (direzione A "collaborazione in scala") e immagine conduttori ---- */
+body[data-page="bass-files"] main, body[data-page="radio-ombra"] main, body[data-page="chi-siamo"] main, body[data-page="eventi"] main, body[data-page="contatti"] main, body[data-page="mountain-waves"] main { position: relative; overflow: hidden; isolation: isolate; }
 .bf-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 @supports ((-webkit-mask-image: url("x")) or (mask-image: url("x"))) {
   .bf-bg span, .bf-bg__dnb { position: absolute; display: block; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; }
