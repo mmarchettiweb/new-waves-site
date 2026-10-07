@@ -24,8 +24,7 @@
       "artist": "New Waves",
       "date": "",
       "tags": [
-        "collettivo",
-        "radio-ombra"
+        "collettivo"
       ],
       "thumb": "assets/img/media/djambe-dema-this-is-dnb-2025.webp"
     },
@@ -50,6 +49,17 @@
         "bass-files"
       ],
       "thumb": "assets/img/media/bass-files-playlist.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=wVE5XIk0yGM",
+      "title": "New Waves with Dema - Radio Ombra 074",
+      "artist": "Radio Ombra",
+      "date": "",
+      "tags": [
+        "radio-ombra"
+      ],
+      "thumb": "assets/img/media/new-waves-with-dema-radio-ombra-074.webp"
     },
     {
       "platform": "youtube",
