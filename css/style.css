@@ -160,7 +160,7 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
   background: var(--c-bg-2); overflow: hidden; display: block;
   background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,90,31,.1) 14px 16px);
 }
-.facade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: luminosity; }
+.facade img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; } /* miniature a colori */
 .facade__plat { position: absolute; left: .75rem; top: .75rem; font: 500 .68rem var(--f-mono); letter-spacing: .18em; text-transform: uppercase; background: var(--c-bg); padding: .25rem .5rem; }
 .facade__play { position: absolute; right: .75rem; bottom: .75rem; width: 56px; height: 56px; background: var(--c-accent); display: grid; place-items: center; transition: background .15s; }
 .facade__play::after { content: ""; width: 18px; height: 20px; background: var(--c-bg); clip-path: polygon(0 0, 0 100%, 100% 50%); }
