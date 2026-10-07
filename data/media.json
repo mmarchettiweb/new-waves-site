@@ -93,6 +93,28 @@
         "bass-files"
       ],
       "thumb": "assets/img/media/bass-files-playlist.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=GEYMR6rwkSg",
+      "title": "Bass Files introduces Was A Be",
+      "artist": "Drum&Bass Italia",
+      "date": "",
+      "tags": [
+        "bass-files"
+      ],
+      "thumb": "assets/img/media/bass-files-was-a-be.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=zPVUL-efHKo",
+      "title": "Bass Files introduces Frame",
+      "artist": "Drum&Bass Italia",
+      "date": "",
+      "tags": [
+        "bass-files"
+      ],
+      "thumb": "assets/img/media/bass-files-frame.webp"
     }
   ]
 }
