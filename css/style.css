@@ -210,13 +210,13 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(10,10,10,0) 40%, var(--c-bg) 100%); } /* sfuma verso il nero in alto */
 .hero__mark {
   position: absolute; z-index: -1; right: -16%; top: 3%; width: 68vw; max-width: 560px; height: auto;
-  mix-blend-mode: normal;
+  mix-blend-mode: normal; opacity: .22; /* mobile: molto più tenue, non disturba il titolo */
 }
 .hero > :not(img) { width: 100%; min-width: 0; }
 .hero h1 { font-size: var(--fs-display); line-height: .8; margin: 0 0 1.25rem; }
 .hero__sub { font: 500 clamp(.78rem, 2.6vw, 1.05rem) var(--f-mono); letter-spacing: .2em; text-transform: uppercase; margin: 0 0 1.75rem; }
 .hero .btn-row { margin-top: 0; }
-@media (min-width: 768px) { :root { --fs-display: min(18vw, 17rem); } .hero__mark { right: 3%; top: 5%; width: 38vw; max-width: 520px; } }
+@media (min-width: 768px) { :root { --fs-display: min(18vw, 17rem); } .hero__mark { right: 3%; top: 5%; width: 38vw; max-width: 520px; opacity: .55; } }
 
 /* sezione con barra arancione laterale (manifesto) */
 .manifesto { display: grid; gap: 2rem; }
