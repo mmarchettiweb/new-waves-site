@@ -312,8 +312,8 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 .cta-booking .btn { font-size: clamp(.7rem, 3.3vw, 1rem); letter-spacing: .04em; text-transform: none; overflow-wrap: anywhere; }
 
 
-/* PAGINA BASS FILES — loghi di sfondo (direzione A "collaborazione in scala") e immagine conduttori ---- */
-body[data-page="bass-files"] main { position: relative; overflow: hidden; isolation: isolate; }
+/* PAGINE BASS FILES e RADIO OMBRA — loghi di sfondo (Radio Ombra usa solo il logo New Waves) (direzione A "collaborazione in scala") e immagine conduttori ---- */
+body[data-page="bass-files"] main, body[data-page="radio-ombra"] main { position: relative; overflow: hidden; isolation: isolate; }
 .bf-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 @supports ((-webkit-mask-image: url("x")) or (mask-image: url("x"))) {
   .bf-bg span, .bf-bg__dnb { position: absolute; display: block; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; }
