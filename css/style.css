@@ -308,7 +308,8 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 .spec-list li:last-child { border-bottom: 1px solid var(--c-line); }
 .spec__k { font: 500 .75rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--c-accent); }
 @media (min-width: 768px) { .spec-list li { grid-template-columns: 12rem 1fr; } }
-.cta-booking .btn { font-size: clamp(.7rem, 3.3vw, 1rem); letter-spacing: .04em; text-transform: none; overflow-wrap: anywhere; }
+/* pulsante con l'indirizzo mail: minuscolo e a una riga anche su mobile */
+.btn--mail { font-size: clamp(.7rem, 3.3vw, 1rem); letter-spacing: .04em; text-transform: none; overflow-wrap: anywhere; }
 
 
 /* PAGINE INTERNE (tutte tranne Home) — logo New Waves di sfondo; Bass Files aggiunge il logo Drum And Bass Italia (direzione A "collaborazione in scala") e immagine conduttori ---- */
