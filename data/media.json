@@ -30,12 +30,34 @@
     },
     {
       "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=wVE5XIk0yGM",
+      "title": "New Waves with Dema - Radio Ombra 074",
+      "artist": "Radio Ombra",
+      "date": "",
+      "tags": [
+        "radio-ombra"
+      ],
+      "thumb": "assets/img/media/new-waves-with-dema-radio-ombra-074.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=HdXYBUBoubY",
+      "title": "New Waves with Djambe - Radio Ombra 074",
+      "artist": "Radio Ombra",
+      "date": "",
+      "tags": [
+        "radio-ombra"
+      ],
+      "thumb": "assets/img/media/radio-ombra-074.webp"
+    },
+    {
+      "platform": "youtube",
       "url": "https://www.youtube.com/watch?v=6BEC7pdORwI",
       "title": "New Waves presents Coce - Radio Ombra 056",
       "artist": "Radio Ombra",
       "date": "",
       "tags": [
-        "bass-files"
+        "radio-ombra"
       ],
       "thumb": "assets/img/media/coce-radio-ombra-056.webp"
     },
@@ -46,7 +68,7 @@
       "artist": "Radio Ombra",
       "date": "",
       "tags": [
-        "bass-files"
+        "radio-ombra"
       ],
       "thumb": "assets/img/media/mangiabasso-djambe-radio-ombra-026.webp"
     },
@@ -71,28 +93,6 @@
         "bass-files"
       ],
       "thumb": "assets/img/media/bass-files-playlist.webp"
-    },
-    {
-      "platform": "youtube",
-      "url": "https://www.youtube.com/watch?v=wVE5XIk0yGM",
-      "title": "New Waves with Dema - Radio Ombra 074",
-      "artist": "Radio Ombra",
-      "date": "",
-      "tags": [
-        "radio-ombra"
-      ],
-      "thumb": "assets/img/media/new-waves-with-dema-radio-ombra-074.webp"
-    },
-    {
-      "platform": "youtube",
-      "url": "https://www.youtube.com/watch?v=HdXYBUBoubY",
-      "title": "New Waves with Djambe - Radio Ombra 074",
-      "artist": "Radio Ombra",
-      "date": "",
-      "tags": [
-        "radio-ombra"
-      ],
-      "thumb": "assets/img/media/radio-ombra-074.webp"
     }
   ]
 }
