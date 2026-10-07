@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /mountain-waves/
+Disallow: /eventi/
 Sitemap: https://DOMINIO.TLD/sitemap.xml
