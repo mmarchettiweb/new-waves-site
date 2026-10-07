@@ -116,20 +116,20 @@
     const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
     const fmt = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
     const row = (e) => {
-      const name = e.link ? `<a href="${esc(e.link)}" rel="noopener">${esc(e.title)}</a>` : esc(e.title);
       const flyer = e.flyer ? `<img class="event__flyer" src="${BASE}${esc(e.flyer)}" alt="Flyer: ${esc(e.title)}" loading="lazy" />` : '';
-      return `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${name}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p></div>${flyer}</article>`;
+      const label = /instagram\.com/.test(e.link || '') ? 'Evento su Instagram' : 'Info evento';
+      const more = e.link ? `<p><a class="link-arrow" href="${esc(e.link)}" rel="noopener">${label}</a></p>` : '';
+      return `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p>${more}</div>${flyer}</article>`;
     };
-    // JSON-LD schema.org/Event generato dalle date future (solo nella pagina Eventi)
+    // JSON-LD schema.org/Event generato dalle date future (Home ed Eventi)
     const jsonLd = (list) => {
-      if (!list.length || document.body.dataset.page !== 'eventi') return;
+      if (!list.length || !['home', 'eventi'].includes(document.body.dataset.page)) return;
       const s = document.createElement('script');
       s.type = 'application/ld+json';
       s.textContent = JSON.stringify(list.map((e) => ({
         '@context': 'https://schema.org', '@type': 'MusicEvent', name: e.title, startDate: e.date,
         eventStatus: 'https://schema.org/EventScheduled',
         location: { '@type': 'Place', name: e.venue, address: { '@type': 'PostalAddress', addressLocality: e.city || undefined } },
-        performer: { '@type': 'MusicGroup', name: 'New Waves Underground Movement' },
         ...(e.link ? { url: e.link } : {}),
       })));
       document.head.append(s);
