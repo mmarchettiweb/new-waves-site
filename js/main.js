@@ -147,7 +147,7 @@
       // pulsanti verso i canali: se l'URL manca restano visibili ma disattivati (nessun link finto)
       channelLinks.forEach((a) => {
         const url = (data.channels || {})[a.dataset.channel];
-        if (url) { a.href = url; return; }
+        if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; return; }
         a.removeAttribute('href');
         a.classList.add('btn--off');
         a.setAttribute('aria-disabled', 'true');
@@ -164,7 +164,7 @@
     const row = (e) => {
       const flyer = e.flyer ? `<img class="event__flyer" src="${BASE}${esc(e.flyer)}" alt="Flyer: ${esc(e.title)}" loading="lazy" />` : '';
       const label = /instagram\.com/.test(e.link || '') ? 'Evento su Instagram' : 'Info evento';
-      const more = e.link ? `<p><a class="link-arrow" href="${esc(e.link)}" rel="noopener">${label}</a></p>` : '';
+      const more = e.link ? `<p><a class="link-arrow" href="${esc(e.link)}" target="_blank" rel="noopener">${label}</a></p>` : '';
       return `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p>${more}</div>${flyer}</article>`;
     };
     // JSON-LD schema.org/Event generato dalle date future (Home ed Eventi)
