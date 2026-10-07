@@ -323,18 +323,18 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
 .btn--mail { font-size: clamp(.7rem, 3.3vw, 1rem); letter-spacing: .04em; text-transform: none; overflow-wrap: anywhere; }
 
 
-/* PAGINE INTERNE (tutte tranne Home) — logo New Waves di sfondo; Bass Files aggiunge il logo Drum And Bass Italia (direzione A "collaborazione in scala") e immagine conduttori ---- */
+/* PAGINE INTERNE (tutte tranne Home) — logo New Waves di sfondo; Bass Files aggiunge, speculare a destra, il logo Drum And Bass Italia, e l'immagine dei conduttori ---- */
 body[data-page="bass-files"] main, body[data-page="radio-ombra"] main, body[data-page="chi-siamo"] main, body[data-page="eventi"] main, body[data-page="contatti"] main, body[data-page="mountain-waves"] main { position: relative; overflow: hidden; isolation: isolate; }
 .bf-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 @supports ((-webkit-mask-image: url("x")) or (mask-image: url("x"))) {
-  .bf-bg span, .bf-bg__dnb { position: absolute; display: block; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; }
+  .bf-bg span { position: absolute; display: block; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; }
   /* New Waves: gigante, bianco a bassa opacità, tagliato dal bordo sinistro */
   .bf-bg__nw { background-color: var(--c-text); opacity: .06; width: 125vw; aspect-ratio: 1000 / 1194; left: -55vw; top: 5rem; -webkit-mask-image: url("../assets/img/brand/logo-mark.webp"); mask-image: url("../assets/img/brand/logo-mark.webp"); }
-  /* Drum And Bass Italia: arancione, affianco all'immagine dei conduttori (ancorato alla figure), tagliato dal bordo destro */
-  .bf-bg__dnb { background-color: var(--c-accent); opacity: .17; width: 36vw; aspect-ratio: 1; left: calc(100% + .25rem); top: 24%; z-index: -1; -webkit-mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); }
+  /* Drum And Bass Italia: speculare al logo New Waves, sul lato destro dell'hero; arancione, tagliato dal bordo destro */
+  .bf-bg__dnb { background-color: var(--c-accent); opacity: .13; width: 90vw; aspect-ratio: 1; right: -42vw; top: 6rem; -webkit-mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); mask-image: url("../assets/img/partner/dnb-italia-logo.webp"); }
   @media (min-width: 768px) {
     .bf-bg__nw { width: 760px; left: -280px; top: 6rem; opacity: .07; }
-    .bf-bg__dnb { width: clamp(160px, 15vw, 280px); left: calc(100% - .25rem); top: 22%; }
+    .bf-bg__dnb { width: 760px; right: -280px; top: calc(6rem + 73px); }
   }
   /* variante B: griglia di loghi alternati (attivabile con class="bf-bg bf-bg--grid" sul contenitore) */
   .bf-bg--grid span { display: none; }
@@ -345,10 +345,7 @@ body[data-page="bass-files"] main, body[data-page="radio-ombra"] main, body[data
 .bf-collab::before { content: ""; flex: 0 0 2.5rem; height: 2px; background: var(--c-accent); }
 .bf-collab__x { color: var(--c-accent); font-size: 1.1rem; }
 /* immagine conduttori: illustrazione quadrata, colori originali (per il bianco e nero: class="bf-figure bf-figure--bw") */
-.bf-figure { position: relative; margin: 2rem 0 0; max-width: 520px; }
-@media (max-width: 767px) { .bf-figure { max-width: 68%; } }
-@media (min-width: 768px) and (max-width: 1099px) { .bf-figure { max-width: 62%; } }
-@media (min-width: 1100px) { .bf-figure { max-width: 460px; } .bf-bg__dnb { width: clamp(240px, 21vw, 400px); } }
+.bf-figure { margin: 2rem 0 0; max-width: 520px; }
 .bf-figure .photo-slot { aspect-ratio: 1; padding: 0; }
 .bf-figure .photo-slot img { filter: none; object-fit: contain; }
 .bf-figure--bw .photo-slot img { filter: grayscale(1) contrast(1.1); }
