@@ -30,6 +30,28 @@
     },
     {
       "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=6BEC7pdORwI",
+      "title": "New Waves presents Coce - Radio Ombra 056",
+      "artist": "Radio Ombra",
+      "date": "",
+      "tags": [
+        "bass-files"
+      ],
+      "thumb": "assets/img/media/coce-radio-ombra-056.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=4gSIbLqgZvY",
+      "title": "Mangiabasso with Djambe - Radio Ombra 026",
+      "artist": "Radio Ombra",
+      "date": "",
+      "tags": [
+        "bass-files"
+      ],
+      "thumb": "assets/img/media/mangiabasso-djambe-radio-ombra-026.webp"
+    },
+    {
+      "platform": "youtube",
       "url": "https://www.youtube.com/watch?v=o4dPzX6sRIU",
       "title": "Bass Files introduces Ardimann",
       "artist": "Drum&Bass Italia",

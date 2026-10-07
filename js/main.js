@@ -27,6 +27,8 @@
     try {
       const u = new URL(url);
       if (u.hostname === 'youtu.be') return { v: u.pathname.slice(1) };
+      const m = u.pathname.match(/^\/(?:live|shorts|embed)\/([\w-]{6,})/); // youtube.com/live/ID, /shorts/ID, /embed/ID
+      if (m) return { v: m[1] };
       return { v: u.searchParams.get('v'), list: u.searchParams.get('list') };
     } catch { return {}; }
   };
@@ -46,6 +48,7 @@
 
   const buildFacade = (item) => {
     const wrap = el('div', 'media-item');
+    wrap.item = item; // serve al carosello per ripristinare l'anteprima
     const btn = el('button', 'facade');
     btn.type = 'button';
     btn.setAttribute('aria-label', `Riproduci: ${item.title} (${PLATFORM[item.platform] || ''})`);
@@ -86,6 +89,48 @@
     return wrap;
   };
 
+  // Carosello: scorrimento nativo (scroll-snap) + pulsanti con ritorno al primo/ultimo elemento (loop).
+  // Quando una scheda esce dalla vista il suo player torna all'anteprima, così l'audio non resta acceso.
+  const initCarousel = (host) => {
+    const root = host.closest('.carousel');
+    const slides = () => [...host.children];
+    if (slides().length < 2) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const btn = (label, txt) => { const b = el('button', 'carousel__btn', txt); b.type = 'button'; b.setAttribute('aria-label', label); return b; };
+    const prev = btn('Episodio precedente', '←');
+    const next = btn('Episodio successivo', '→');
+    const count = el('p', 'carousel__count');
+    count.setAttribute('aria-live', 'polite');
+    const nav = el('div', 'carousel__nav');
+    nav.append(prev, count, next);
+    root.append(nav);
+    const step = () => (slides()[1].offsetLeft - slides()[0].offsetLeft) || host.clientWidth;
+    const max = () => host.scrollWidth - host.clientWidth;
+    const go = (dir) => {
+      const behavior = reduce ? 'auto' : 'smooth';
+      const x = host.scrollLeft;
+      if (dir > 0 && x >= max() - 2) host.scrollTo({ left: 0, behavior });
+      else if (dir < 0 && x <= 2) host.scrollTo({ left: max(), behavior });
+      else host.scrollBy({ left: dir * step(), behavior });
+    };
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+    const update = () => {
+      const i = Math.min(slides().length - 1, Math.round(host.scrollLeft / step()));
+      count.textContent = `${i + 1} / ${slides().length}`;
+    };
+    const stopHidden = () => slides().forEach((s) => {
+      const hr = host.getBoundingClientRect();
+      const r = s.getBoundingClientRect();
+      const hidden = r.right <= hr.left + 8 || r.left >= hr.right - 8;
+      if (hidden && s.querySelector('iframe')) s.replaceWith(buildFacade(s.item));
+    });
+    let t;
+    host.addEventListener('scroll', () => { update(); clearTimeout(t); t = setTimeout(stopHidden, 150); }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  };
+
   const mediaHosts = document.querySelectorAll('[data-media]');
   const channelLinks = document.querySelectorAll('[data-channel]');
   if (mediaHosts.length || channelLinks.length) {
@@ -96,7 +141,8 @@
         const items = data.items.filter((i) => i.url && (i.platform !== 'youtube' || ytEmbed(i.url)) && (!tag || (i.tags || []).includes(tag))).slice(0, limit);
         if (!items.length) { host.append(buildEmpty()); return; }
         items.forEach((i) => host.append(buildFacade(i)));
-        host.insertAdjacentElement('afterend', el('p', 'media-note', 'Contenuti esterni: al click si carica il player di YouTube o SoundCloud, che può impostare cookie di terze parti.'));
+        if (host.closest('.carousel')) initCarousel(host);
+        (host.closest('.carousel') || host).insertAdjacentElement('afterend', el('p', 'media-note', 'Contenuti esterni: al click si carica il player di YouTube o SoundCloud, che può impostare cookie di terze parti.'));
       });
       // pulsanti verso i canali: se l'URL manca restano visibili ma disattivati (nessun link finto)
       channelLinks.forEach((a) => {
