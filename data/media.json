@@ -74,17 +74,6 @@
     },
     {
       "platform": "youtube",
-      "url": "https://www.youtube.com/watch?v=o4dPzX6sRIU",
-      "title": "Bass Files introduces Ardimann",
-      "artist": "Drum&Bass Italia",
-      "date": "",
-      "tags": [
-        "bass-files"
-      ],
-      "thumb": "assets/img/media/bass-files-ardimann.webp"
-    },
-    {
-      "platform": "youtube",
       "url": "https://www.youtube.com/playlist?list=PLHic1IAEDwjtrP7gMXRtyPHchoGaM0omK",
       "title": "Bass Files — playlist",
       "artist": "Drum&Bass Italia",
@@ -93,6 +82,17 @@
         "bass-files"
       ],
       "thumb": "assets/img/media/bass-files-playlist.webp"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=o4dPzX6sRIU",
+      "title": "Bass Files introduces Ardimann",
+      "artist": "Drum&Bass Italia",
+      "date": "",
+      "tags": [
+        "bass-files"
+      ],
+      "thumb": "assets/img/media/bass-files-ardimann.webp"
     },
     {
       "platform": "youtube",
