@@ -206,7 +206,7 @@ main > section { padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2
   position: relative; min-height: min(calc(100svh - var(--header-h)), 52rem); display: flex; flex-direction: column; justify-content: flex-end;
   border-top: 0 !important; overflow: hidden; padding-block: 2rem 2.5rem !important;
 }
-.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 100%; z-index: -2; }
+.hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 100%; z-index: -2; opacity: .6; } /* texture meno luminosa: più nero sotto */
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(10,10,10,0) 40%, var(--c-bg) 100%); } /* sfuma verso il nero in alto */
 .hero__mark {
   position: absolute; z-index: -1; right: -16%; top: 3%; width: 68vw; max-width: 560px; height: auto;
