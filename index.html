@@ -3,22 +3,113 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>New Waves — Jungle, Drum & Bass, Dubstep tra Venezia e Pordenone</title>
-  <meta name="description" content="Collettivo bass music tra Venezia e Pordenone: jungle, drum & bass, dubstep. Membri, progetti, set e booking." />
+  <title>New Waves — Collettivo bass music a Venezia e Pordenone</title>
+  <meta name="description" content="New Waves Underground Movement è un collettivo di bass music attivo tra Venezia e Pordenone: jungle, drum &amp; bass, dubstep. Membri, progetti, set e booking." />
   
   <meta name="theme-color" content="#0A0A0A" />
   <link rel="canonical" href="https://DOMINIO.TLD/" />
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="New Waves Underground Movement" />
   <meta property="og:locale" content="it_IT" />
-  <meta property="og:title" content="New Waves — Jungle, Drum & Bass, Dubstep tra Venezia e Pordenone" />
-  <meta property="og:description" content="Collettivo bass music tra Venezia e Pordenone: jungle, drum & bass, dubstep. Membri, progetti, set e booking." />
+  <meta property="og:title" content="New Waves — Collettivo bass music a Venezia e Pordenone" />
+  <meta property="og:description" content="New Waves Underground Movement è un collettivo di bass music attivo tra Venezia e Pordenone: jungle, drum &amp; bass, dubstep. Membri, progetti, set e booking." />
   <meta property="og:url" content="https://DOMINIO.TLD/" />
   <meta property="og:image" content="https://DOMINIO.TLD/assets/img/og/og-default.jpg" /> <!-- TODO: creare 1200x630 -->
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" /> <!-- TODO: creare favicon -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://DOMINIO.TLD/#website",
+      "url": "https://DOMINIO.TLD/",
+      "name": "New Waves Underground Movement",
+      "alternateName": "New Waves",
+      "inLanguage": "it-IT",
+      "publisher": {
+        "@id": "https://DOMINIO.TLD/#group"
+      }
+    },
+    {
+      "@type": "MusicGroup",
+      "@id": "https://DOMINIO.TLD/#group",
+      "name": "New Waves Underground Movement",
+      "alternateName": "New Waves",
+      "url": "https://DOMINIO.TLD/",
+      "description": "Collettivo di bass music orientato su jungle e drum & bass, attivo tra Venezia e Pordenone.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://DOMINIO.TLD/assets/img/brand/logo-mark.png",
+        "width": 1656,
+        "height": 1977
+      },
+      "genre": [
+        "Jungle",
+        "Drum & Bass",
+        "Dubstep"
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Venezia"
+        },
+        {
+          "@type": "City",
+          "name": "Pordenone"
+        }
+      ],
+      "sameAs": [
+        "https://instagram.com/newwaves_um",
+        "https://instagram.com/mountainwavesfest",
+        "https://instagram.com/bass_files_italia"
+      ],
+      "member": [
+        {
+          "@type": "Person",
+          "@id": "https://DOMINIO.TLD/chi-siamo/#djambe",
+          "name": "Djambe",
+          "url": "https://DOMINIO.TLD/chi-siamo/#djambe"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://DOMINIO.TLD/chi-siamo/#dema",
+          "name": "Dema",
+          "url": "https://DOMINIO.TLD/chi-siamo/#dema"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://DOMINIO.TLD/chi-siamo/#coce",
+          "name": "Coce",
+          "url": "https://DOMINIO.TLD/chi-siamo/#coce"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://DOMINIO.TLD/chi-siamo/#mrsn",
+          "name": "MRSN",
+          "url": "https://DOMINIO.TLD/chi-siamo/#mrsn"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://DOMINIO.TLD/chi-siamo/#damnspark",
+          "name": "Damnspark",
+          "url": "https://DOMINIO.TLD/chi-siamo/#damnspark"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "booking",
+        "email": "newwavesundergroundmovement@gmail.com",
+        "availableLanguage": "it"
+      }
+    }
+  ]
+}
+  </script>
   <script src="js/main.js" defer></script>
 </head>
 <body data-page="home">
@@ -26,7 +117,7 @@
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <a class="brand" href="./" aria-label="New Waves — Home">
-      <img src="assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" />
+      <img src="assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" aria-hidden="true" />
       <span class="brand__name">NEW WAVES<span class="dot">.</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -38,8 +129,8 @@
   <main id="main">
     <!-- HERO: texture arancione su nero, titolo gigante, marchio ritagliato -->
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero__bg" src="assets/img/hero/hero-orange-1400.webp" srcset="assets/img/hero/hero-orange-800.webp 800w, assets/img/hero/hero-orange-1400.webp 1400w, assets/img/hero/hero-orange.webp 2048w" sizes="100vw" width="2048" height="1152" alt="" fetchpriority="high" decoding="async" />
-      <img class="hero__mark" src="assets/img/brand/logo-mark.webp" width="1000" height="1194" alt="" />
+      <img class="hero__bg" src="assets/img/hero/hero-orange-1400.webp" srcset="assets/img/hero/hero-orange-800.webp 800w, assets/img/hero/hero-orange-1400.webp 1400w, assets/img/hero/hero-orange.webp 2048w" sizes="100vw" width="2048" height="1152" alt="" aria-hidden="true" fetchpriority="high" decoding="async" />
+      <img class="hero__mark" src="assets/img/brand/logo-mark.webp" width="1000" height="1194" alt="" aria-hidden="true" />
       <p class="label">Collettivo bass music — Venezia / Pordenone</p>
       <h1 id="hero-title">NEW<br />WAVES<span class="dot">.</span></h1>
       <p class="hero__sub">Jungle — Drum &amp; Bass — Dubstep</p>
@@ -69,7 +160,8 @@
       <p class="section-foot"><a class="link-arrow" href="chi-siamo/">Schede complete</a></p>
     </section>
 
-    <section aria-labelledby="prossimo"><p class="label">03 — Prossimo evento</p><h2 id="prossimo">Prossima data<span class="dot">.</span></h2><div data-events="next"></div></section>
+    <section aria-labelledby="prossimo"><p class="label">03 — Prossimo evento</p><h2 id="prossimo">Prossima data<span class="dot">.</span></h2><div data-events="next"></div>
+      <noscript><p>Le prossime date sono sull'<a href="https://instagram.com/newwaves_um" target="_blank" rel="noopener">Instagram di New Waves</a>.</p></noscript></section>
 
     <section aria-labelledby="progetti"><p class="label">04 — Progetti</p><h2 id="progetti">Progetti<span class="dot">.</span></h2>
       <ul class="project-list">
@@ -81,6 +173,7 @@
 
     <section aria-labelledby="ascolta"><p class="label">05 — Ascolta</p><h2 id="ascolta">Ascolta<span class="dot">.</span></h2>
       <div class="media-grid" data-media data-media-tag="collettivo" data-media-limit="4"></div>
+      <noscript><p>Per ascoltare i set serve JavaScript: li trovi sul <a href="https://www.youtube.com/@Newwaves_undergroundmovement" target="_blank" rel="noopener">canale YouTube di New Waves</a>.</p></noscript>
       <div class="btn-row">
         <a class="btn" data-channel="youtube" data-channel-label="Tutti i set su YouTube" rel="noopener">Tutti i set su YouTube</a>
         <a class="btn btn--ghost" data-channel="soundcloud" data-channel-label="Tutti i mix su SoundCloud" rel="noopener">Tutti i mix su SoundCloud</a>

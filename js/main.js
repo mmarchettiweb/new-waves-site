@@ -54,7 +54,7 @@
     btn.setAttribute('aria-label', `Riproduci: ${item.title} (${PLATFORM[item.platform] || ''})`);
     if (item.thumb) {
       const img = new Image();
-      img.src = BASE + item.thumb; img.alt = ''; img.loading = 'lazy'; img.width = 640; img.height = 360;
+      img.src = BASE + item.thumb; img.alt = ''; img.setAttribute('aria-hidden', 'true'); img.loading = 'lazy'; img.width = 640; img.height = 360;
       btn.append(img);
     }
     const play = el('span', 'facade__play'); play.setAttribute('aria-hidden', 'true');
@@ -148,10 +148,8 @@
       channelLinks.forEach((a) => {
         const url = (data.channels || {})[a.dataset.channel];
         if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; return; }
-        a.removeAttribute('href');
-        a.classList.add('btn--off');
-        a.setAttribute('aria-disabled', 'true');
-        a.textContent = `${a.dataset.channelLabel} — link in arrivo`;
+        // senza URL non è un link: uno <span> evita un <a> senza href (non crawlable, non focalizzabile)
+        a.replaceWith(el('span', `${a.className} btn--off`, `${a.dataset.channelLabel} — link in arrivo`));
       });
     }).catch(() => mediaHosts.forEach((h) => h.append(buildEmpty())));
   }
@@ -175,6 +173,7 @@
       s.textContent = JSON.stringify(list.map((e) => ({
         '@context': 'https://schema.org', '@type': 'MusicEvent', name: e.title, startDate: e.date,
         eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         location: { '@type': 'Place', name: e.venue, address: { '@type': 'PostalAddress', addressLocality: e.city || undefined } },
         ...(e.link ? { url: e.link } : {}),
       })));

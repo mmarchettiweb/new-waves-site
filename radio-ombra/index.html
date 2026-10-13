@@ -4,21 +4,100 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Radio Ombra — la residenza di New Waves a Venezia</title>
-  <meta name="description" content="La residenza artistica di New Waves a Radio Ombra, radio indipendente di Venezia." />
+  <meta name="description" content="La residenza artistica di New Waves a Radio Ombra, radio indipendente al Chet Bar di Venezia: una giornata al mese, due ore di dj set in diretta." />
   
   <meta name="theme-color" content="#0A0A0A" />
   <link rel="canonical" href="https://DOMINIO.TLD/radio-ombra/" />
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="New Waves Underground Movement" />
   <meta property="og:locale" content="it_IT" />
   <meta property="og:title" content="Radio Ombra — la residenza di New Waves a Venezia" />
-  <meta property="og:description" content="La residenza artistica di New Waves a Radio Ombra, radio indipendente di Venezia." />
+  <meta property="og:description" content="La residenza artistica di New Waves a Radio Ombra, radio indipendente al Chet Bar di Venezia: una giornata al mese, due ore di dj set in diretta." />
   <meta property="og:url" content="https://DOMINIO.TLD/radio-ombra/" />
   <meta property="og:image" content="https://DOMINIO.TLD/assets/img/og/og-default.jpg" /> <!-- TODO: creare 1200x630 -->
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" /> <!-- TODO: creare favicon -->
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://DOMINIO.TLD/#website",
+      "url": "https://DOMINIO.TLD/",
+      "name": "New Waves Underground Movement",
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://DOMINIO.TLD/radio-ombra/#webpage",
+      "url": "https://DOMINIO.TLD/radio-ombra/",
+      "name": "Radio Ombra",
+      "inLanguage": "it-IT",
+      "isPartOf": {
+        "@id": "https://DOMINIO.TLD/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://DOMINIO.TLD/radio-ombra/#breadcrumb"
+      },
+      "about": {
+        "@id": "https://DOMINIO.TLD/radio-ombra/#series"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://DOMINIO.TLD/radio-ombra/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://DOMINIO.TLD/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Radio Ombra",
+          "item": "https://DOMINIO.TLD/radio-ombra/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://DOMINIO.TLD/radio-ombra/#series",
+      "name": "New Waves a Radio Ombra",
+      "url": "https://DOMINIO.TLD/radio-ombra/",
+      "inLanguage": "it-IT",
+      "description": "Residenza artistica di New Waves a Radio Ombra: una giornata al mese, per due ore, dj set in diretta dal Chet Bar sul canale YouTube di Radio Ombra.",
+      "creator": {
+        "@id": "https://DOMINIO.TLD/#group"
+      },
+      "contributor": {
+        "@type": "Organization",
+        "name": "Radio Ombra",
+        "description": "Radio indipendente con base al Chet Bar, locale storico di Venezia.",
+        "location": {
+          "@type": "Place",
+          "name": "Chet Bar",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Venezia"
+          }
+        }
+      }
+    },
+    {
+      "@type": "MusicGroup",
+      "@id": "https://DOMINIO.TLD/#group",
+      "name": "New Waves Underground Movement",
+      "url": "https://DOMINIO.TLD/"
+    }
+  ]
+}
+  </script>
   <script src="../js/main.js" defer></script>
 </head>
 <body data-page="radio-ombra">
@@ -26,7 +105,7 @@
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <a class="brand" href="../" aria-label="New Waves — Home">
-      <img src="../assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" />
+      <img src="../assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" aria-hidden="true" />
       <span class="brand__name">NEW WAVES<span class="dot">.</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -55,6 +134,7 @@
       <div class="carousel" role="region" aria-roledescription="carosello" aria-label="Puntate di Radio Ombra">
         <div class="carousel__track" data-media data-media-tag="radio-ombra"></div>
       </div>
+      <noscript><p>Per guardare le puntate serve JavaScript: le trovi sul <a href="https://www.youtube.com/@Newwaves_undergroundmovement" target="_blank" rel="noopener">canale YouTube di New Waves</a>.</p></noscript>
       <div class="btn-row">
         <a class="btn" data-channel="soundcloud" data-channel-label="Tutti i mix su SoundCloud" rel="noopener">Tutti i mix su SoundCloud</a>
         <a class="btn btn--ghost" data-channel="youtube" data-channel-label="Tutti i set su YouTube" rel="noopener">Tutti i set su YouTube</a>
