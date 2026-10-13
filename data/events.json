@@ -1,4 +1,13 @@
 {
   "_comment": "Eventi: aggiungere oggetti. status: upcoming|past. Non inventare date.",
-  "events": []
+  "events": [
+    {
+      "date": "2026-10-17",
+      "title": "QZB (Dreams to dust - launch tour) + Fabio FC",
+      "venue": "CS Rivolta",
+      "city": "Marghera (Venezia)",
+      "status": "upcoming",
+      "link": "https://www.instagram.com/p/DdZSw6DjZl_/"
+    }
+  ]
 }

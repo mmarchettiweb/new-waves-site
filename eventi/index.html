@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eventi — New Waves</title>
-  <meta name="description" content="Prossime date e archivio delle serate del collettivo." />
+  <title>Prossime date ed eventi — New Waves Underground Movement</title>
+  <meta name="description" content="Prossime date e archivio delle serate di New Waves Underground Movement, collettivo bass music tra Venezia e Pordenone." />
   
+  <meta name="robots" content="noindex, follow" /> <!-- pagina non pubblicata: togliere noindex, riaggiungere a sitemap.xml e al menu quando ci sono date -->
   <meta name="theme-color" content="#0A0A0A" />
   <link rel="canonical" href="https://DOMINIO.TLD/eventi/" />
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="New Waves Underground Movement" />
   <meta property="og:locale" content="it_IT" />
-  <meta property="og:title" content="Eventi — New Waves" />
-  <meta property="og:description" content="Prossime date e archivio delle serate del collettivo." />
+  <meta property="og:title" content="Prossime date ed eventi — New Waves Underground Movement" />
+  <meta property="og:description" content="Prossime date e archivio delle serate di New Waves Underground Movement, collettivo bass music tra Venezia e Pordenone." />
   <meta property="og:url" content="https://DOMINIO.TLD/eventi/" />
   <meta property="og:image" content="https://DOMINIO.TLD/assets/img/og/og-default.jpg" /> <!-- TODO: creare 1200x630 -->
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" /> <!-- TODO: creare favicon -->
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- TODO: preload font woff2 self-hosted da assets/fonts/ -->
+  <link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <script src="../js/main.js" defer></script>
 </head>
 <body data-page="eventi">
@@ -26,32 +28,58 @@
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <a class="brand" href="../" aria-label="New Waves — Home">
-      <img src="../assets/img/brand/logo-mark.webp" width="40" height="48" alt="" />
+      <img src="../assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" aria-hidden="true" />
       <span class="brand__name">NEW WAVES<span class="dot">.</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Principale">
-      <ul><li><a href="../chi-siamo/">Chi siamo</a></li><li><a href="../eventi/" aria-current="page">Eventi</a></li><li><a href="../bass-files/">Bass Files</a></li><li><a href="../radio-ombra/">Radio Ombra</a></li><li><a href="../contatti/">Contatti</a></li></ul>
+      <ul><li><a href="../">Home</a></li><li><a href="../chi-siamo/">Chi siamo</a></li><li><a href="../bass-files/">Bass Files</a></li><li><a href="../radio-ombra/">Radio Ombra</a></li><li><a href="../contatti/">Contatti</a></li></ul>
     </nav>
   </header>
 
   <main id="main">
-    <header class="page-head"><p class="label">NEW WAVES — EVENTI</p><h1>EVENTI<span class="dot">.</span></h1></header>
-    <section aria-labelledby="prossime"><p class="label">PROSSIME DATE</p><h2 id="prossime">TODO</h2><div data-events="upcoming"></div></section>
-    <section aria-labelledby="archivio"><p class="label">ARCHIVIO</p><h2 id="archivio">TODO</h2><div data-events="archive"></div></section>
+    <!-- sfondo decorativo: logo New Waves (maschera CSS, vedi css/style.css) -->
+    <div class="bf-bg" aria-hidden="true"><span class="bf-bg__nw"></span></div>
+    <header class="page-head"><p class="label">New Waves — Eventi</p><h1>Eventi<span class="dot">.</span></h1></header>
+
+    <section aria-labelledby="prossime"><p class="label">01 — Prossime date</p><h2 id="prossime">Prossime date<span class="dot">.</span></h2>
+      <!-- Le date si aggiungono in data/events.json; con lista vuota il JS mostra lo stato vuoto con CTA booking -->
+      <div data-events="upcoming"><noscript><p>Attiva JavaScript per vedere le date, oppure <a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">scrivici</a>.</p></noscript></div>
+    </section>
+
+    <section aria-labelledby="dove"><p class="label">02 — Dove suoniamo</p><h2 id="dove">Dove suoniamo<span class="dot">.</span></h2>
+      <ul class="venue-list">
+        <li><h3>CS Rivolta</h3><p class="venue__where">Venezia</p></li>
+        <li><h3>Astro Club</h3><p class="venue__where">Pordenone</p></li>
+        <li><h3>Veneto Blaze</h3><p class="venue__where">Stage curato dal collettivo da due anni</p></li>
+        <li><h3>Mountain Waves Fest</h3><p class="venue__where">Il festival organizzato dal collettivo — <a href="../mountain-waves/">in arrivo</a></p></li>
+      </ul>
+      <p class="media-note">Più numerose chiamate in tutto il territorio.</p>
+    </section>
+
+    <section aria-labelledby="archivio"><p class="label">03 — Archivio</p><h2 id="archivio">Archivio<span class="dot">.</span></h2>
+      <div data-events="archive"></div>
+    </section>
+
+    <section class="cta-booking" aria-labelledby="booking"><p class="label">04 — Booking</p><h2 id="booking">Una data<br />nel tuo posto<span class="dot">.</span></h2>
+      <p>Formazione variabile: la lineup di ogni data si conferma in fase di booking.</p>
+      <div class="btn-row"><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking →</a><a class="btn btn--ghost" href="../contatti/">Contatti e rider</a></div>
+    </section>
   </main>
 
   <!-- FOOTER: tenere identico in tutte le pagine -->
   <footer class="site-footer">
-    <p class="label">NEW WAVES UNDERGROUND MOVEMENT — JUNGLE · DRUM &amp; BASS · DUBSTEP</p>
+    <p class="footer-big" aria-hidden="true">NEW WAVES<span class="dot">.</span></p>
+    <p class="label">New Waves Underground Movement — Jungle · Drum &amp; Bass · Dubstep — Venezia / Pordenone</p>
     <ul class="footer-links">
-      <li><a href="https://instagram.com/newwaves_um" rel="noopener">Instagram</a></li>
-      <li><a href="https://instagram.com/mountainwavesfest" rel="noopener">Mountain Waves</a></li>
-      <li><a href="https://instagram.com/bass_files_italia" rel="noopener">Bass Files</a></li>
+      <li><a href="https://instagram.com/newwaves_um" target="_blank" rel="noopener">Instagram New Waves</a></li>
+      <li><a href="https://instagram.com/bass_files_italia" target="_blank" rel="noopener">Instagram Bass Files</a></li>
+      <li><a href="https://instagram.com/mountainwavesfest" target="_blank" rel="noopener">Instagram Mountain Waves Fest</a></li>
       <li><a href="../mountain-waves/">Mountain Waves (in arrivo)</a></li>
-      <li><a href="mailto:newwavesundergroundmovement@gmail.com">Booking</a></li>
+      <li><a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Booking via mail</a></li>
+      <li><a href="https://www.youtube.com/@Newwaves_undergroundmovement" target="_blank" rel="noopener">YouTube New Waves</a></li>
+      <!-- TODO: link canale SoundCloud (da data/media.json -> channels) -->
     </ul>
-    <!-- TODO: link YouTube e SoundCloud -->
     <p class="legal">© 2026 New Waves Underground Movement</p>
   </footer>
 </body>

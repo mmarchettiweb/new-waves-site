@@ -33,7 +33,7 @@ URL puliti, ogni pagina in una cartella con il proprio `index.html`:
 | Mountain Waves | `/mountain-waves/` | **Pagina predisposta ma solo come stub "in arrivo"** (stesso template, hero, testo breve, link Instagram @mountainwavesfest, CTA mail). `noindex` finché non sarà costruita. Progettare il template in modo che si possa riempire dopo senza rifare il design |
 | Contatti | `/contatti/` | Booking via mail (CTA principale), Instagram dei progetti, rider tecnico sintetico, area stampa/press kit solo se Marco conferma |
 
-- Navigazione: Home · Chi siamo · Eventi · Bass Files · Radio Ombra · Contatti. Mountain Waves compare nel footer e nelle card progetto della home finché non è pronta (non in nav principale). Menu mobile accessibile (tastiera, `aria-expanded`, chiusura con Esc), voce attiva con `aria-current="page"`.
+- Navigazione: Home · Chi siamo · Bass Files · Radio Ombra · Contatti. (Eventi è temporaneamente non pubblicata: noindex, fuori da menu, sitemap e robots; la pagina esiste in `eventi/`.) Mountain Waves compare nel footer e nelle card progetto della home finché non è pronta (non in nav principale). Menu mobile accessibile (tastiera, `aria-expanded`, chiusura con Esc), voce attiva con `aria-current="page"`.
 - Header e footer identici su tutte le pagine. Senza framework né build step, duplicali nell'HTML (non caricarli via JS: peggiora SEO e provoca flash). Aggiungi in cima a ogni file un commento `<!-- HEADER: tenere identico in tutte le pagine -->`.
 - Ogni pagina ha: `<title>` e meta description propri, canonical, Open Graph, un solo `h1`, breadcrumb dove ha senso.
 - Struttura file: **la cartella del progetto esiste già** (vedi `README.md`): non ricrearla né spostare file senza chiedere. Percorsi **relativi** a livello di pagina (`../css/style.css` nelle sottocartelle), così il sito funziona sia su dominio custom sia su GitHub Pages in sottocartella; l'unica eccezione è `404.html` (percorsi dalla root).
@@ -75,8 +75,7 @@ URL puliti, ogni pagina in una cartella con il proprio `index.html`:
 - URL YouTube/SoundCloud dei set.
 - Foto di MRSN e Damnspark (usa un placeholder grafico coerente, non foto stock).
 - Le foto nel Press Kit non sono etichettate: l'associazione `member-a/b/c` con Djambe/Dema/Coce **va confermata da Marco**.
-- Ruolo di Snok Brown (vuoto nel Press Kit).
-- Ruolo dei primi tre membri nei crediti ("DJ — Fondatore" è solo di Djambe).
+- Instagram di MRSN e Damnspark da fornire.
 - Dominio definitivo e se il deploy è su dominio custom o GitHub Pages in sottocartella.
 - Contenuti per Eventi: elenco date passate e future, con venue e flyer.
 - Contenuti per Bass Files: episodi/ospiti, link ai video, eventuale playlist YouTube.

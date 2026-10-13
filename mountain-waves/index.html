@@ -10,6 +10,7 @@
   <link rel="canonical" href="https://DOMINIO.TLD/mountain-waves/" />
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="New Waves Underground Movement" />
   <meta property="og:locale" content="it_IT" />
   <meta property="og:title" content="Mountain Waves Fest — in arrivo" />
   <meta property="og:description" content="Mountain Waves Fest, il festival organizzato da New Waves. Pagina in arrivo." />
@@ -18,7 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" /> <!-- TODO: creare favicon -->
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- TODO: preload font woff2 self-hosted da assets/fonts/ -->
+  <link rel="preload" href="../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
   <script src="../js/main.js" defer></script>
 </head>
 <body data-page="mountain-waves">
@@ -26,33 +27,37 @@
   <a class="skip-link" href="#main">Vai al contenuto</a>
   <header class="site-header">
     <a class="brand" href="../" aria-label="New Waves — Home">
-      <img src="../assets/img/brand/logo-mark.webp" width="40" height="48" alt="" />
+      <img src="../assets/img/brand/logo-mark-96.webp" width="30" height="36" alt="" aria-hidden="true" />
       <span class="brand__name">NEW WAVES<span class="dot">.</span></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Principale">
-      <ul><li><a href="../chi-siamo/">Chi siamo</a></li><li><a href="../eventi/">Eventi</a></li><li><a href="../bass-files/">Bass Files</a></li><li><a href="../radio-ombra/">Radio Ombra</a></li><li><a href="../contatti/">Contatti</a></li></ul>
+      <ul><li><a href="../">Home</a></li><li><a href="../chi-siamo/">Chi siamo</a></li><li><a href="../bass-files/">Bass Files</a></li><li><a href="../radio-ombra/">Radio Ombra</a></li><li><a href="../contatti/">Contatti</a></li></ul>
     </nav>
   </header>
 
   <main id="main">
+    <!-- sfondo decorativo: logo New Waves (maschera CSS, vedi css/style.css) -->
+    <div class="bf-bg" aria-hidden="true"><span class="bf-bg__nw"></span></div>
     <header class="page-head"><p class="label">NEW WAVES — MOUNTAIN WAVES</p><h1>MOUNTAIN WAVES<span class="dot">.</span></h1></header>
     <section aria-labelledby="in-arrivo"><p class="label">IN ARRIVO</p><h2 id="in-arrivo">Il sito del festival arriva presto.</h2>
-      <p><a href="https://instagram.com/mountainwavesfest" rel="noopener">@mountainwavesfest</a></p></section>
+      <p><a href="https://instagram.com/mountainwavesfest" target="_blank" rel="noopener">@mountainwavesfest</a></p></section>
     <!-- STUB: pagina completa da costruire in seguito. Mantiene noindex finché non è pronta. -->
   </main>
 
   <!-- FOOTER: tenere identico in tutte le pagine -->
   <footer class="site-footer">
-    <p class="label">NEW WAVES UNDERGROUND MOVEMENT — JUNGLE · DRUM &amp; BASS · DUBSTEP</p>
+    <p class="footer-big" aria-hidden="true">NEW WAVES<span class="dot">.</span></p>
+    <p class="label">New Waves Underground Movement — Jungle · Drum &amp; Bass · Dubstep — Venezia / Pordenone</p>
     <ul class="footer-links">
-      <li><a href="https://instagram.com/newwaves_um" rel="noopener">Instagram</a></li>
-      <li><a href="https://instagram.com/mountainwavesfest" rel="noopener">Mountain Waves</a></li>
-      <li><a href="https://instagram.com/bass_files_italia" rel="noopener">Bass Files</a></li>
+      <li><a href="https://instagram.com/newwaves_um" target="_blank" rel="noopener">Instagram New Waves</a></li>
+      <li><a href="https://instagram.com/bass_files_italia" target="_blank" rel="noopener">Instagram Bass Files</a></li>
+      <li><a href="https://instagram.com/mountainwavesfest" target="_blank" rel="noopener">Instagram Mountain Waves Fest</a></li>
       <li><a href="../mountain-waves/">Mountain Waves (in arrivo)</a></li>
-      <li><a href="mailto:newwavesundergroundmovement@gmail.com">Booking</a></li>
+      <li><a href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Booking via mail</a></li>
+      <li><a href="https://www.youtube.com/@Newwaves_undergroundmovement" target="_blank" rel="noopener">YouTube New Waves</a></li>
+      <!-- TODO: link canale SoundCloud (da data/media.json -> channels) -->
     </ul>
-    <!-- TODO: link YouTube e SoundCloud -->
     <p class="legal">© 2026 New Waves Underground Movement</p>
   </footer>
 </body>

@@ -18,4 +18,4 @@ Brief completo: `docs/PROMPT.md`. Contenuti reali: `docs/CONTENUTI.md`. Non inve
 - Procedi una pagina alla volta: Home → Chi siamo → Eventi → Bass Files → Radio Ombra → Contatti → stub Mountain Waves.
 - Dopo ogni pagina: screenshot mobile+desktop, console senza errori, Lighthouse.
 - Lavora su branch + PR (`feat/...`) per la review CodeRabbit; non dichiarare una review che non è stata eseguita.
-- TODO aperti: cerca `TODO` nel codice (URL YouTube/SoundCloud, dominio, OG image, favicon, font, foto MRSN/Damnspark, associazione foto-nome).
+- TODO aperti: cerca `TODO` nel codice (URL YouTube/SoundCloud, dominio, OG image, favicon, font, foto MRSN/Damnspark, associazione foto-nome, Instagram di MRSN e Damnspark da fornire).
