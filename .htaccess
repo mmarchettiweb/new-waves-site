@@ -1,0 +1,79 @@
+# NEW WAVES — .htaccess per hosting Apache/LiteSpeed (Hostinger)
+# Spiegazione riga per riga e test da fare dopo il caricamento: docs/AUDIT-TECNICO.md, sezione G.
+# Il server locale (python3 -m http.server) ignora questo file: va verificato sul dominio reale.
+
+# --- Base -------------------------------------------------------------------
+DirectoryIndex index.html
+Options -Indexes
+ErrorDocument 404 /404.html
+AddDefaultCharset utf-8
+
+# File nascosti (.git, .DS_Store, ...) mai serviti; resta accessibile solo /.well-known/ (certificato SSL)
+<IfModule mod_alias.c>
+  RedirectMatch 404 "/\.(?!well-known/)"
+</IfModule>
+
+# --- HTTPS ------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # DA DECIDERE: versione canonica con o senza www (deve coincidere con canonical e sitemap).
+  # Esempio per "senza www": togliere i # dalle due righe sotto dopo aver sostituito DOMINIO.TLD.
+  # RewriteCond %{HTTP_HOST} =www.DOMINIO.TLD [NC]
+  # RewriteRule ^ https://DOMINIO.TLD%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Tipi MIME --------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType application/json .json
+  AddType application/xml .xml
+</IfModule>
+
+# --- Compressione -----------------------------------------------------------
+# Brotli se il modulo è attivo, altrimenti gzip. woff2 e webp sono già compressi: non vanno ricompressi.
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Cache ------------------------------------------------------------------
+# HTML e dati (events.json, media.json): sempre rivalidati, così date e set nuovi si vedono subito.
+# CSS, JS, font, immagini: 1 anno. ATTENZIONE: se cambi un file con lo stesso nome, chi ha già
+# visitato il sito vede la versione vecchia. Vedi "Da decidere" nel report (parametro ?v=).
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|woff2|webp|png|jpe?g|svg)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  # i file compressi dipendono da Accept-Encoding: serve ai proxy/CDN per non servire la variante sbagliata
+  <FilesMatch "\.(html|css|js|json|svg|xml|txt)$">
+    Header append Vary Accept-Encoding
+  </FilesMatch>
+</IfModule>

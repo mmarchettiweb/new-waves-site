@@ -61,7 +61,7 @@
     btn.append(el('span', 'facade__plat', PLATFORM[item.platform] || ''), play);
     btn.addEventListener('click', () => {
       const f = document.createElement('iframe');
-      f.title = item.title; f.allow = 'autoplay; encrypted-media'; f.allowFullscreen = true;
+      f.title = item.title; f.allowFullscreen = true;
       f.referrerPolicy = 'strict-origin-when-cross-origin';
       f.src = item.platform === 'youtube'
         ? ytEmbed(item.url)
@@ -133,6 +133,8 @@
 
   const mediaHosts = document.querySelectorAll('[data-media]');
   const channelLinks = document.querySelectorAll('[data-channel]');
+  // senza URL non è un link: uno <span> evita un <a> senza href (non crawlable, non focalizzabile)
+  const channelOff = (a) => a.replaceWith(el('span', `${a.className} btn--off`, `${a.dataset.channelLabel} — link in arrivo`));
   if (mediaHosts.length || channelLinks.length) {
     fetch(`${BASE}data/media.json`).then((r) => r.json()).then((data) => {
       mediaHosts.forEach((host) => {
@@ -148,10 +150,13 @@
       channelLinks.forEach((a) => {
         const url = (data.channels || {})[a.dataset.channel];
         if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; return; }
-        // senza URL non è un link: uno <span> evita un <a> senza href (non crawlable, non focalizzabile)
-        a.replaceWith(el('span', `${a.className} btn--off`, `${a.dataset.channelLabel} — link in arrivo`));
+        channelOff(a);
       });
-    }).catch(() => mediaHosts.forEach((h) => h.append(buildEmpty())));
+    }).catch(() => {
+      // media.json non disponibile: segnaposto al posto dei set; restano attivi i soli pulsanti con href già nell'HTML
+      mediaHosts.forEach((h) => { if (!h.children.length) h.append(buildEmpty()); });
+      channelLinks.forEach((a) => { if (!a.hasAttribute('href')) channelOff(a); });
+    });
   }
 
   /* 3. EVENTI ------------------------------------------------------------ */
