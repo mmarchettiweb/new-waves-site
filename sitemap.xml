@@ -1,8 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://DOMINIO.TLD/</loc></url>
-  <url><loc>https://DOMINIO.TLD/chi-siamo/</loc></url>
-  <url><loc>https://DOMINIO.TLD/bass-files/</loc></url>
-  <url><loc>https://DOMINIO.TLD/radio-ombra/</loc></url>
-  <url><loc>https://DOMINIO.TLD/contatti/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://DOMINIO.TLD/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/en/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/chi-siamo/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/chi-siamo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/chi-siamo/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/chi-siamo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/chi-siamo/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/bass-files/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/bass-files/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/bass-files/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/bass-files/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/en/bass-files/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/bass-files/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/bass-files/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/bass-files/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/radio-ombra/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/radio-ombra/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/radio-ombra/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/radio-ombra/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/en/radio-ombra/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/radio-ombra/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/radio-ombra/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/radio-ombra/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/contatti/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/contatti/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/contatti/" />
+  </url>
+  <url>
+    <loc>https://DOMINIO.TLD/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://DOMINIO.TLD/contatti/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://DOMINIO.TLD/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://DOMINIO.TLD/contatti/" />
+  </url>
 </urlset>

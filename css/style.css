@@ -363,6 +363,17 @@ body[data-page="bass-files"] main, body[data-page="radio-ombra"] main, body[data
 .cta-booking h2 { font-size: clamp(3rem, 14vw, 10rem); line-height: .85; }
 .cta-booking p:not(.label) { font-size: 1.15rem; }
 
+
+/* selettore lingua IT / EN (micro-label mono, lingua attiva in arancione) */
+.site-nav .lang-switch { display: flex; align-items: center; gap: .5rem; font: 500 .78rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; }
+.site-nav .lang-switch a { font: inherit; letter-spacing: inherit; }
+.lang-switch [aria-current="true"] { color: var(--c-accent); border-bottom: 2px solid var(--c-accent); padding-block: .5rem; }
+.lang-switch__sep { color: var(--c-text-dim); }
+@media (max-width: 767px) {
+  .site-nav li.lang-switch { border-bottom: 0; padding-top: 1.25rem; }
+  .site-nav .lang-switch a, .lang-switch [aria-current="true"] { display: inline-block; font: 500 .9rem var(--f-mono); letter-spacing: .16em; padding-block: .75rem; min-height: 44px; }
+}
+
 /* 7. UTILITY ------------------------------------------------------------ */
 .page-404 { min-height: 100vh; display: grid; align-content: center; }
 @media (prefers-reduced-motion: reduce) {

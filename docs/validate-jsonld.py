@@ -43,7 +43,7 @@ def walk(node):
             yield from walk(v)
 
 
-pages = ["index.html"] + sorted(glob.glob("*/index.html"))
+pages = ["index.html"] + sorted(p for p in glob.glob("*/index.html") if not p.startswith("en/")) + ["en/index.html"] + sorted(glob.glob("en/*/index.html"))
 hosts, total = set(), 0
 for page in pages:
     src = open(page, encoding="utf-8").read()

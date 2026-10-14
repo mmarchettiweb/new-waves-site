@@ -4,8 +4,25 @@
 (() => {
   'use strict';
 
-  // percorso base: le pagine in sottocartella stanno un livello sotto la root
-  const BASE = document.body.dataset.page && document.body.dataset.page !== 'home' ? '../' : './';
+  // percorso base: la radice del sito, ricavata dal percorso di questo script (/js/main.js), valido a qualsiasi profondità (/, /chi-siamo/, /en/about/...)
+  const BASE = new URL('../', document.currentScript.src).href;
+
+  // lingua della pagina (document.documentElement.lang): tutte le stringhe generate dal JS passano da qui
+  const LANG = document.documentElement.lang === 'en' ? 'en' : 'it';
+  const T = {
+    it: {
+      play: 'Riproduci', prev: 'Episodio precedente', next: 'Episodio successivo', soon: 'Set in arrivo', linkSoon: 'link in arrivo',
+      external: 'Contenuti esterni: al click si carica il player di YouTube o SoundCloud, che può impostare cookie di terze parti.',
+      emptyTitle: 'Nessuna data in programma', emptyText: 'Le prossime date compaiono qui. Vuoi portarci nella tua serata?',
+      emptyCta: 'Scrivici per il booking →', archive: 'Archivio in costruzione.', onInstagram: 'Evento su Instagram', info: 'Info evento', locale: 'it-IT', flyer: 'Flyer',
+    },
+    en: {
+      play: 'Play', prev: 'Previous episode', next: 'Next episode', soon: 'Sets coming soon', linkSoon: 'link coming soon',
+      external: 'External content: clicking loads the YouTube or SoundCloud player, which may set third-party cookies.',
+      emptyTitle: 'No dates scheduled', emptyText: 'Upcoming dates will appear here. Want us at your night?',
+      emptyCta: 'Email us to book →', archive: 'Archive in the making.', onInstagram: 'Event on Instagram', info: 'Event info', locale: 'en-GB', flyer: 'Flyer',
+    },
+  }[LANG];
 
   /* 1. NAVIGAZIONE MOBILE ------------------------------------------------ */
   const toggle = document.querySelector('.nav-toggle');
@@ -51,7 +68,7 @@
     wrap.item = item; // serve al carosello per ripristinare l'anteprima
     const btn = el('button', 'facade');
     btn.type = 'button';
-    btn.setAttribute('aria-label', `Riproduci: ${item.title} (${PLATFORM[item.platform] || ''})`);
+    btn.setAttribute('aria-label', `${T.play}: ${item.title} (${PLATFORM[item.platform] || ''})`);
     if (item.thumb) {
       const img = new Image();
       img.src = BASE + item.thumb; img.alt = ''; img.setAttribute('aria-hidden', 'true'); img.loading = 'lazy'; img.width = 640; img.height = 360;
@@ -84,7 +101,7 @@
   const buildEmpty = () => {
     const wrap = el('div', 'media-item');
     const box = el('div', 'facade facade--empty');
-    box.append(el('span', 'facade__empty', 'Set in arrivo'));
+    box.append(el('span', 'facade__empty', T.soon));
     wrap.append(box);
     return wrap;
   };
@@ -97,8 +114,8 @@
     if (slides().length < 2) return;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const btn = (label, txt) => { const b = el('button', 'carousel__btn', txt); b.type = 'button'; b.setAttribute('aria-label', label); return b; };
-    const prev = btn('Episodio precedente', '←');
-    const next = btn('Episodio successivo', '→');
+    const prev = btn(T.prev, '←');
+    const next = btn(T.next, '→');
     const count = el('p', 'carousel__count');
     count.setAttribute('aria-live', 'polite');
     const nav = el('div', 'carousel__nav');
@@ -134,7 +151,7 @@
   const mediaHosts = document.querySelectorAll('[data-media]');
   const channelLinks = document.querySelectorAll('[data-channel]');
   // senza URL non è un link: uno <span> evita un <a> senza href (non crawlable, non focalizzabile)
-  const channelOff = (a) => a.replaceWith(el('span', `${a.className} btn--off`, `${a.dataset.channelLabel} — link in arrivo`));
+  const channelOff = (a) => a.replaceWith(el('span', `${a.className} btn--off`, `${a.dataset.channelLabel} — ${T.linkSoon}`));
   if (mediaHosts.length || channelLinks.length) {
     fetch(`${BASE}data/media.json`).then((r) => r.json()).then((data) => {
       mediaHosts.forEach((host) => {
@@ -144,7 +161,7 @@
         if (!items.length) { host.append(buildEmpty()); return; }
         items.forEach((i) => host.append(buildFacade(i)));
         if (host.closest('.carousel')) initCarousel(host);
-        (host.closest('.carousel') || host).insertAdjacentElement('afterend', el('p', 'media-note', 'Contenuti esterni: al click si carica il player di YouTube o SoundCloud, che può impostare cookie di terze parti.'));
+        (host.closest('.carousel') || host).insertAdjacentElement('afterend', el('p', 'media-note', T.external));
       });
       // pulsanti verso i canali: se l'URL manca restano visibili ma disattivati (nessun link finto)
       channelLinks.forEach((a) => {
@@ -163,12 +180,13 @@
   const eventHosts = document.querySelectorAll('[data-events]');
   if (eventHosts.length) {
     const esc = (s = '') => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    const fmt = (d) => new Date(`${d}T12:00:00`).toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    const fmt = (d) => new Date(`${d}T12:00:00`).toLocaleDateString(T.locale, { day: '2-digit', month: 'short', year: 'numeric' });
+    const fmtDate = (d) => (LANG === 'it' ? fmt(d).toUpperCase() : fmt(d));
     const row = (e) => {
-      const flyer = e.flyer ? `<img class="event__flyer" src="${BASE}${esc(e.flyer)}" alt="Flyer: ${esc(e.title)}" loading="lazy" />` : '';
-      const label = /instagram\.com/.test(e.link || '') ? 'Evento su Instagram' : 'Info evento';
+      const flyer = e.flyer ? `<img class="event__flyer" src="${BASE}${esc(e.flyer)}" alt="${T.flyer}: ${esc(e.title)}" loading="lazy" />` : '';
+      const label = /instagram\.com/.test(e.link || '') ? T.onInstagram : T.info;
       const more = e.link ? `<p><a class="link-arrow" href="${esc(e.link)}" target="_blank" rel="noopener">${label}</a></p>` : '';
-      return `<article class="event"><p class="event__date">${esc(fmt(e.date))}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${e.city ? ' — ' + esc(e.city) : ''}</p>${more}</div>${flyer}</article>`;
+      return `<article class="event"><p class="event__date">${esc(fmtDate(e.date))}</p><div><h3>${esc(e.title)}</h3><p>${esc(e.venue)}${(e['city_' + LANG] || e.city) ? ' — ' + esc(e['city_' + LANG] || e.city) : ''}</p>${more}</div>${flyer}</article>`;
     };
     // JSON-LD schema.org/Event generato dalle date future (Home ed Eventi)
     const jsonLd = (list) => {
@@ -177,14 +195,15 @@
       s.type = 'application/ld+json';
       s.textContent = JSON.stringify(list.map((e) => ({
         '@context': 'https://schema.org', '@type': 'MusicEvent', name: e.title, startDate: e.date,
+        inLanguage: LANG === 'en' ? 'en-GB' : 'it-IT',
         eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-        location: { '@type': 'Place', name: e.venue, address: { '@type': 'PostalAddress', addressLocality: e.city || undefined } },
+        location: { '@type': 'Place', name: e.venue, address: { '@type': 'PostalAddress', addressLocality: e['city_' + LANG] || e.city || undefined } },
         ...(e.link ? { url: e.link } : {}),
       })));
       document.head.append(s);
     };
-    const empty = `<div class="empty"><strong>Nessuna data in programma</strong><p>Le prossime date compaiono qui. Vuoi portarci nella tua serata?</p><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">Scrivici per il booking →</a></div>`; // TODO: copy definitivo
+    const empty = `<div class="empty"><strong>${T.emptyTitle}</strong><p>${T.emptyText}</p><a class="btn" href="mailto:newwavesundergroundmovement@gmail.com?subject=Booking%20New%20Waves">${T.emptyCta}</a></div>`;
     fetch(`${BASE}data/events.json`).then((r) => r.json()).then(({ events }) => {
       const today = new Date().toISOString().slice(0, 10);
       const up = events.filter((e) => e.date >= today).sort((a, b) => a.date.localeCompare(b.date));
@@ -193,7 +212,7 @@
       eventHosts.forEach((h) => {
         const kind = h.dataset.events;
         const list = kind === 'archive' ? past : kind === 'next' ? up.slice(0, 1) : up;
-        h.innerHTML = list.length ? list.map(row).join('') : (kind === 'archive' ? '<p class="media-note">Archivio in costruzione.</p>' : empty);
+        h.innerHTML = list.length ? list.map(row).join('') : (kind === 'archive' ? `<p class="media-note">${T.archive}</p>` : empty);
       });
     }).catch(() => eventHosts.forEach((h) => { h.innerHTML = empty; }));
   }
